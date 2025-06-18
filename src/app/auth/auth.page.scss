@@ -1,0 +1,39 @@
+.logo-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.logo-box {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* elegante azul oscuro */
+  padding: 16px 32px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.logo-text {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+ion-content {
+  --background: linear-gradient(135deg, #0f0c29, #120c4e, #1f1f31); // degradado oscuro
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: white;
+}
+
+ion-item {
+  --background: rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  margin-bottom: 14px;
+  color: white;
+}
+
+ion-label,
+ion-input {
+  color: white;
+}
+

@@ -1,0 +1,96 @@
+.logo-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.logo-box {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* elegante azul oscuro */
+  padding: 16px 32px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.logo-text {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.form-col {
+  position: relative;
+}
+
+.back-wrapper {
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.back-button {
+  --color: var(--ion-color-primary);
+  font-weight: bold;
+}
+
+.logo-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.logo-box {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  padding: 16px 32px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.logo-text {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.back-wrapper {
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.back-button {
+  --border-radius: 20px;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --background: transparent;
+  --border-color: var(--ion-color-primary);
+  --color: var(--ion-color-primary);
+  --box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  --background: var(--ion-color-primary-tint);
+  --color: blue;
+}
+
+ion-content {
+  --background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); // degradado oscuro
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: white;
+}
+
+ion-item {
+  --background: rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  margin-bottom: 14px;
+  color: white;
+}
+
+ion-label,
+ion-input {
+  color: white;
+}
