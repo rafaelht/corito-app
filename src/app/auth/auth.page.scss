@@ -37,14 +37,15 @@ ion-input {
   color: white;
 }
 
-ion-footer {
-    display: block;
-    // position: relative;
-    -ms-flex-order: 1;
-    order: 1;
-    width: 100%;
-    z-index: 10;
+.custom-toolbar {
+  --background: #0b1f1a !important;  // negro puro
+  --color: #fff;                  // color del texto blanco
+  text-align: center;
 }
-.copyright{
-    text-align: center;
-}  
+
+.copyright {
+  text-align: center;
+  width: 100%;
+  margin: 0;
+  padding: 10px 0;
+}
