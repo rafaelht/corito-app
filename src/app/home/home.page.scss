@@ -8,7 +8,7 @@ ion-content {
 
 .logo-header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -28,16 +28,19 @@ ion-content {
   text-transform: uppercase;
 }
 
-.logout-container {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  z-index: 10;
-}
-.logout-button {
-  --background: rgba(255, 255, 255, 0.15);
-  --border-radius: 8px;
+.profile-button {
   --color: white;
-  backdrop-filter: blur(4px);
+  font-size: 24px;
 }
+
+
+.styled-hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, #ffffff33, #ffffff88, #ffffff33);
+  margin: 0 auto;
+  width: 100%;
+  opacity: 0.5;
+}
+
 

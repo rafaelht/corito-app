@@ -1,14 +1,30 @@
-<ion-content class="ion-padding">
-  <div class="logout-container">
-    <ion-button fill="clear" size="medium" class="logout-button" (click)="logout()">
-  <ion-icon name="log-out-outline" slot="icon-only"></ion-icon>
-</ion-button>
-  </div>
-
-  <div class="logo-header">
-    <div class="logo-box">
-      <h1 class="logo-text">¡Bienvenido!</h1>
-      <p style="color: white;">{{ userEmail }}</p>
-    </div>
+<ion-content class="home-content">
+  <!-- Contenido centrado -->
+  <ion-grid class="ion-text-center">
+    <ion-row class="ion-justify-content-center ion-align-items-center" style="height: 10vh;">
+      <ion-col size="12" size-md="4">
+        <div class="logo-box">
+          <div class="logo-header">
+            <h1 class="logo-text">BIENVENIDO</h1>
+            <ion-button
+              fill="clear"
+              class="profile-button"
+              (click)="openPopover($event)">
+              <ion-icon name="person-circle-outline" slot="icon-only"></ion-icon>
+            </ion-button>
+            
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-content>
+  <div>
+      <hr class="styled-hr" />
   </div>
 </ion-content>
+    
+</ion-content>
+
+
+

@@ -5,6 +5,8 @@ import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common'; // para NgIf
 import { FormsModule } from '@angular/forms'; // para ngModel
 
+
+
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.page.html',
@@ -46,6 +48,13 @@ export class AuthPage {
   goToRegister() {
     this.router.navigateByUrl('/register');
   }
+
+  ionViewWillEnter() {
+  this.email = '';
+  this.password = '';
+  this.message = '';
+  this.loading = false;
+}
 
 
 }

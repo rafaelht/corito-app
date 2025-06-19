@@ -49,7 +49,7 @@
             Registrarse
           </ion-button>
 
-          <ion-text color="danger" *ngIf="message">
+          <ion-text *ngIf="message" [ngClass]="messageClass">
             <p class="ion-padding-start">{{ message }}</p>
           </ion-text>
         </form>
