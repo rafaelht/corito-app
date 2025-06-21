@@ -1,5 +1,5 @@
-<ion-content class="ion-padding">
-  <div class="register-container">
+<ion-content class="ion-padding auth-common">
+  <div class="container">
     <!-- Botón Back -->
     <div class="back-wrapper">
       <ion-button fill="clear" (click)="goBack()" class="back-button">
@@ -9,13 +9,13 @@
     </div>
 
     <!-- Header -->
-    <div class="register-header">
-      <h1 class="register-title">VAMO ARRIBA</h1>
+    <div class="header">
+      <h1 class="title">VAMO ARRIBA</h1>
     </div>
 
     <!-- Formulario -->
-    <div class="register-form-container">
-      <form (submit)="register()" class="register-form">
+    <div class="form-container">
+      <form (submit)="register()" class="form">
         <div class="form-group">
           <ion-item class="custom-input">
             <ion-label position="floating">Nombre</ion-label>
@@ -90,7 +90,7 @@
           </ion-button>
         </div>
 
-        <div class="message-container" *ngIf="message">
+        <div class="message-container" [ngClass]="messageClass" *ngIf="message">
           <ion-text [ngClass]="messageClass">
             <p>{{ message }}</p>
           </ion-text>
@@ -100,11 +100,4 @@
   </div>
 </ion-content>
 
-<ion-footer class="custom-footer">
-  <div class="footer-content">
-    <p class="footer-text">
-      By
-      <a href="#" class="footer-link">Rafael H.</a>
-    </p>
-  </div>
-</ion-footer>
+

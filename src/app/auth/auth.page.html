@@ -1,11 +1,11 @@
-<ion-content class="ion-padding">
-  <div class="auth-container">
-    <div class="auth-header">
-      <h1 class="auth-title">CORITOS</h1>
+<ion-content class="ion-padding auth-common">
+  <div class="container">
+    <div class="header">
+      <h1 class="title">CORITOS</h1>
     </div>
 
-    <div class="auth-form-container">
-      <form (submit)="login()" class="auth-form">
+    <div class="form-container">
+      <form (submit)="login()" class="form">
         <div class="form-group">
           <ion-item class="custom-input">
             <ion-label position="floating">Correo electrónico</ion-label>
@@ -52,7 +52,7 @@
           </ion-button>
         </div>
 
-        <div class="error-message" *ngIf="message">
+        <div class="message-container error-message" *ngIf="message">
           <ion-text color="danger">
             <p>{{ message }}</p>
           </ion-text>
@@ -62,12 +62,5 @@
   </div>
 </ion-content>
 
-<ion-footer class="custom-footer">
-  <div class="footer-content">
-    <p class="footer-text">
-      By
-      <a href="#" class="footer-link">Rafael H.</a>
-    </p>
-  </div>
-</ion-footer>
+
 

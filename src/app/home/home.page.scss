@@ -26,7 +26,6 @@ ion-toolbar {
 .home-title {
   font-size: 2rem;
   font-weight: 700;
-  color: white;
   text-transform: uppercase;
   letter-spacing: 0.3rem;
   margin: 0;
@@ -35,13 +34,6 @@ ion-toolbar {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-}
-
-@media (min-width: 768px) {
-  .home-title {
-    font-size: 2.5rem;
-    letter-spacing: 0.5rem;
-  }
 }
 
 .profile-button {
@@ -101,15 +93,15 @@ ion-content {
   --border-radius: 50%;
   --width: 56px;
   --height: 56px;
-}
 
-.create-event-fab:hover {
-  --box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-  transform: scale(1.05);
-}
+  &:hover {
+    --box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    transform: scale(1.05);
+  }
 
-.create-event-fab:active {
-  transform: scale(0.95);
+  &:active {
+    transform: scale(0.95);
+  }
 }
 
 .fab-tooltip {
@@ -227,6 +219,13 @@ ion-spinner {
   --color: #667eea;
   width: 50px;
   height: 50px;
+}
+
+@media (min-width: 768px) {
+  .home-title {
+    font-size: 2.5rem;
+    letter-spacing: 0.5rem;
+  }
 }
 
 
