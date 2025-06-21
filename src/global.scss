@@ -39,9 +39,9 @@
 // Common styles for auth and register pages
 .auth-common {
   ion-content {
-    --background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-    color: white;
+    --background: linear-gradient(135deg, #0f0c29, #66628a, #8f8fb9);
+    background: linear-gradient(135deg, #574cb4, #6f69b4, #9292c0);
+    color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -52,7 +52,7 @@
   }
 
   .container {
-    width: 100%;
+    width: 90%;
     max-width: 400px;
     display: flex;
     flex-direction: column;

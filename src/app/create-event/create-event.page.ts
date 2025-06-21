@@ -96,6 +96,36 @@ export class CreateEventPage implements OnInit {
     }
   }
 
+  addActivityAndKeepFocus(inputElement: any, event?: any) {
+    // Prevenir el submit del formulario si el evento viene de Enter
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    const value = String(inputElement.value ?? '').trim();
+    if (value) {
+      if (!this.activities.includes(value)) {
+        this.activities.push(value);
+      }
+      // Limpiar el input
+      inputElement.value = '';
+      // Mantener el foco en el input
+      setTimeout(() => {
+        inputElement.setFocus();
+      }, 100);
+    }
+  }
+
+  handleActivityKeydown(event: KeyboardEvent, inputElement: any) {
+    // Prevenir el submit del formulario cuando se presiona Enter/Return
+    if (event.key === 'Enter' || event.keyCode === 13) {
+      event.preventDefault();
+      event.stopPropagation();
+      this.addActivityAndKeepFocus(inputElement, event);
+    }
+  }
+
   removeActivity(index: number) {
     this.activities.splice(index, 1);
   }
@@ -125,21 +155,12 @@ export class CreateEventPage implements OnInit {
   }
 
   async createEvent() {
-    await this._submitForm('active');
+    await this._submitForm();
   }
 
-  async saveDraft() {
-    await this._submitForm('draft');
-  }
-
-  private async _submitForm(status: 'draft' | 'active') {
-    if (status === 'active' && this.eventForm.invalid) {
+  private async _submitForm() {
+    if (this.eventForm.invalid) {
       await this.showToast('Por favor, completa todos los campos requeridos.', 'warning');
-      return;
-    }
-
-    if (status === 'draft' && !this.eventForm.get('title')?.value && this.activities.length === 0) {
-      await this.showToast('Agrega al menos un título o actividad para guardar el borrador.', 'warning');
       return;
     }
 
@@ -152,11 +173,11 @@ export class CreateEventPage implements OnInit {
       const timeValue = formValues.time ? new Date(formValues.time).toLocaleTimeString('en-GB') : '12:00:00';
 
       const eventData: EventForm = {
-        title: formValues.title || 'Borrador sin título',
+        title: formValues.title,
         description: formValues.description || '',
         date: dateValue,
         time: timeValue,
-        location: formValues.location || 'Por definir',
+        location: formValues.location,
         activities: this.activities,
         max_guests: formValues.max_guests || null,
       };
@@ -165,22 +186,22 @@ export class CreateEventPage implements OnInit {
       if (this.isEditMode && this.eventId) {
         result = await this.eventService.updateEvent(this.eventId, eventData);
       } else {
-        result = await this.eventService.createEvent(eventData, this.userId, status);
+        result = await this.eventService.createEvent(eventData, this.userId, 'active');
       }
 
       if (result) {
-        const successMessage = this.isEditMode ? 'Evento actualizado!' : (status === 'draft' ? 'Borrador guardado!' : 'Evento creado!');
+        const successMessage = this.isEditMode ? 'Evento actualizado!' : 'Evento creado!';
         await this.showToast(successMessage, 'success');
         this.eventForm.reset();
         this.activities = [];
         this.router.navigateByUrl('/home');
       } else {
-        const errorMessage = this.isEditMode ? 'Error al actualizar el evento' : (status === 'draft' ? 'Error al guardar el borrador' : 'Error al crear el evento');
+        const errorMessage = this.isEditMode ? 'Error al actualizar el evento' : 'Error al crear el evento';
         await this.showToast(errorMessage, 'danger');
       }
     } catch (error) {
-      console.error(`Error saving event with status ${status}:`, error);
-      const errorMessage = this.isEditMode ? 'Error al actualizar el evento' : (status === 'draft' ? 'Error al guardar el borrador' : 'Error al crear el evento');
+      console.error('Error saving event:', error);
+      const errorMessage = this.isEditMode ? 'Error al actualizar el evento' : 'Error al crear el evento';
       await this.showToast(errorMessage, 'danger');
     } finally {
       this.isSubmitting = false;

@@ -10,7 +10,7 @@ import { ProfilePopoverComponent } from '../profile-popover/profile-popover.comp
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [IonicModule, CommonModule, RouterLink, ProfilePopoverComponent],
+  imports: [IonicModule, CommonModule, RouterLink],
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })

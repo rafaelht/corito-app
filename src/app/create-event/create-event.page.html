@@ -21,7 +21,7 @@
                 <ion-label position="stacked">Título del Evento *</ion-label>
                 <ion-input 
                   formControlName="title" 
-                  placeholder="Ej: Reunión familiar de Navidad"
+                  placeholder="Ej: Reunión familiar..."
                   type="text">
                 </ion-input>
               </ion-item>
@@ -95,19 +95,21 @@
               <p>Agrega las actividades que se realizarán</p>
             </div>
             <ion-card-content>
-              <ion-item>
-                <ion-input 
-                  #activityInput
-                  placeholder="Agregar actividad..."
-                  (keyup.enter)="addActivity(activityInput.value ?? ''); activityInput.value = ''">
-                </ion-input>
-                <ion-button 
-                  slot="end" 
-                  fill="clear"
-                  (click)="addActivity(activityInput.value ?? ''); activityInput.value = ''">
-                  <ion-icon name="add"></ion-icon>
-                </ion-button>
-              </ion-item>
+              <div (keydown)="handleActivityKeydown($event, activityInput)">
+                <ion-item>
+                  <ion-input 
+                    #activityInput
+                    placeholder="Agregar actividad..."
+                    (keydown.enter)="addActivityAndKeepFocus(activityInput, $event)">
+                  </ion-input>
+                  <ion-button 
+                    slot="end" 
+                    fill="clear"
+                    (click)="addActivityAndKeepFocus(activityInput)">
+                    <ion-icon name="add"></ion-icon>
+                  </ion-button>
+                </ion-item>
+              </div>
 
               <ion-list>
                 <ion-item *ngFor="let activity of activities; let i = index">
@@ -136,16 +138,6 @@
               [disabled]="eventForm.invalid || isSubmitting">
               <ion-icon name="create-outline" slot="start"></ion-icon>
               {{ isSubmitting ? (isEditMode ? 'Actualizando...' : 'Creando...') : (isEditMode ? 'Actualizar Evento' : 'Crear Evento') }}
-            </ion-button>
-
-            <ion-button 
-              *ngIf="!isEditMode"
-              expand="block" 
-              fill="outline" 
-              (click)="saveDraft()"
-              [disabled]="isSubmitting">
-              <ion-icon name="save-outline" slot="start"></ion-icon>
-              Guardar como Borrador
             </ion-button>
           </div>
         </ion-col>
