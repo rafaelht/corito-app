@@ -1,5 +1,10 @@
-<ion-list>
+<ion-list lines="none">
+  <ion-item button (click)="viewProfile()">
+    <ion-icon slot="start" name="person-circle-outline"></ion-icon>
+    <ion-label>Mi Perfil</ion-label>
+  </ion-item>
   <ion-item button (click)="logout()">
-    <ion-icon name="log-out-outline" slot="start"></ion-icon>
+    <ion-icon slot="start" name="log-out-outline"></ion-icon>
     <ion-label>Cerrar sesión</ion-label>
+  </ion-item>
 </ion-list>

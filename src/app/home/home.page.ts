@@ -1,38 +1,65 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicModule, AlertController, PopoverController } from '@ionic/angular';
+import { IonicModule, AlertController, PopoverController, IonContent } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { SupabaseService } from '../supabase.service';
 import { ProfilePopoverComponent } from '../profile-popover/profile-popover.component';
+import { EventService } from '../services/event.service';
+import { Event as AppEvent } from '../models/event.interface';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [IonicModule, CommonModule],
+  imports: [IonicModule, CommonModule, RouterLink, ProfilePopoverComponent],
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
   userEmail: string = '';
+  userId: string = '';
+  events: AppEvent[] = [];
+  isLoading: boolean = true;
 
   constructor(
     private supabase: SupabaseService,
     private router: Router,
     private alertController: AlertController,
-    private popoverController: PopoverController
+    private popoverController: PopoverController,
+    private eventService: EventService
   ) {}
 
-  async ngOnInit() {
-    const {
-      data: { user },
-    } = await this.supabase.client.auth.getUser();
+  ngOnInit() {
+    // No uses async en ngOnInit directamente
+  }
+
+  async ionViewWillEnter() {
+    this.isLoading = true;
+    const { data: { user } } = await this.supabase.client.auth.getUser();
 
     if (user) {
       this.userEmail = user.email || '';
+      this.userId = user.id;
+      this.loadUserEvents();
+    } else {
+      this.isLoading = false;
     }
   }
 
-  async openPopover(ev: Event) {
+  async loadUserEvents() {
+    try {
+      this.events = await this.eventService.getEventsByUser(this.userId);
+    } catch (error) {
+      console.error('Error loading events:', error);
+    } finally {
+      this.isLoading = false;
+    }
+  }
+
+  createNewEvent() {
+    this.router.navigateByUrl('/create-event');
+  }
+
+  async openPopover(ev: any) {
     const popover = await this.popoverController.create({
       component: ProfilePopoverComponent,
       event: ev,
@@ -70,3 +97,4 @@ export class HomePage implements OnInit {
     await alert.present();
   }
 }
+

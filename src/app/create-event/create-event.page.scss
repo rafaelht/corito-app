@@ -1,0 +1,108 @@
+/* Estilos para la página de creación de eventos */
+
+:host {
+  ion-content {
+    --background: linear-gradient(to bottom, #1a1a1a, #2b2b2b);
+  }
+}
+
+ion-header {
+  box-shadow: none;
+}
+
+ion-toolbar {
+  --background: transparent;
+}
+
+ion-card {
+  background: rgba(30, 30, 30, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  margin: 16px;
+  padding: 10px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+ion-card-header, ion-card-content {
+  padding: 16px;
+}
+
+.section-header {
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.section-header h2 {
+  margin: 0;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.section-header p {
+  margin: 4px 0 0;
+  font-size: 0.9em;
+  opacity: 0.9;
+}
+
+ion-item {
+  --background: transparent;
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  --border-color: rgba(255, 255, 255, 0.2);
+  --highlight-color-focused: transparent;
+  margin-bottom: 10px;
+}
+
+ion-input,
+ion-textarea {
+  --background: #2a2a2a;
+  --color: #fff;
+  --placeholder-color: #888;
+  --placeholder-opacity: 0.6;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 12px 16px !important;
+}
+
+ion-item.item-has-focus ion-input,
+ion-item.item-has-focus ion-textarea {
+  --border-color: var(--ion-color-primary) !important;
+  box-shadow: 0 0 5px var(--ion-color-primary);
+}
+
+ion-button[type="submit"] {
+  margin-top: 25px;
+}
+
+ion-modal::part(backdrop) {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+// Estilos para los modales de fecha/hora
+ion-modal {
+  ion-toolbar {
+    --background: #1e1e1e;
+    --color: #fff;
+    --border-width: 0;
+  }
+
+  ion-button {
+    --color: var(--ion-color-primary);
+  }
+
+  ion-content, ion-datetime {
+    --background: #2a2a2a;
+    background: #2a2a2a;
+  }
+
+  ion-datetime {
+    --color: #fff;
+    border-radius: 0;
+  }
+}

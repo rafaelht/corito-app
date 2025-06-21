@@ -1,9 +1,6 @@
 <ion-content class="home-content">
-  <br>
-  <br>
-  <br>
-  <!-- Contenido centrado -->
-  <ion-grid class="ion-text-center">
+  
+  <ion-grid class="ion-text-center ion-padding-top">
     <ion-row class="ion-justify-content-center ion-align-items-center">
       <ion-col size="12" size-md="4">
         <div class="logo-box">
@@ -21,12 +18,53 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-content>
-  <div>
-      <hr class="styled-hr" />
+
+  <!-- Lista de Eventos -->
+  <div class="events-container">
+    <h2 class="events-title">Mis Coritos</h2>
+    <div *ngIf="isLoading" class="ion-text-center ion-padding">
+      <ion-spinner name="crescent"></ion-spinner>
+    </div>
+
+    <div *ngIf="!isLoading && events.length === 0" class="empty-state">
+      <ion-icon name="calendar-outline"></ion-icon>
+      <p>No tienes eventos todavía.</p>
+      <span>¡Crea tu primer evento para empezar!</span>
+    </div>
+
+    <ion-grid *ngIf="!isLoading && events.length > 0">
+      <ion-row>
+        <ion-col size="12" size-md="6" size-lg="4" *ngFor="let event of events">
+          <ion-card class="event-card" [routerLink]="['/event-detail', event.id]">
+            <ion-card-header>
+              <div class="card-title-container">
+                <ion-card-title>{{ event.title }}</ion-card-title>
+                <ion-badge *ngIf="event.status === 'draft'" color="medium">Borrador</ion-badge>
+              </div>
+              <ion-card-subtitle>{{ event.date | date: 'fullDate' }}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              <p><ion-icon name="location-outline" slot="start"></ion-icon> {{ event.location }}</p>
+              <p><ion-icon name="time-outline" slot="start"></ion-icon> {{ event.date + 'T' + event.time | date:'h:mm a' }}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
-</ion-content>
-    
+  
+  <!-- Botón flotante para crear evento -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="createNewEvent()" class="create-event-fab">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <!-- Tooltip para el botón flotante -->
+  <div class="fab-tooltip">
+    Crear nuevo evento
+  </div>
+
 </ion-content>
 
 

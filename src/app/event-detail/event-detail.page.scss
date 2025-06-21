@@ -1,0 +1,129 @@
+ion-content {
+  --background: #1c1c1e;
+}
+
+ion-toolbar {
+  --background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+ion-back-button {
+  background: rgba(44, 44, 46, 0.7);
+  border-radius: 50%;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.header-container {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  color: #fff;
+}
+
+.header-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+}
+
+.event-title, .event-subtitle {
+  position: relative;
+  z-index: 1;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.event-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.event-subtitle {
+  font-size: 1rem;
+  margin-top: 0;
+}
+
+.detail-card {
+  background: #2c2c2e;
+  border-radius: 12px;
+  margin: 0;
+  color: #f5f5f5;
+}
+
+.detail-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 16px;
+
+  ion-icon {
+    font-size: 1.8rem;
+    color: #667eea;
+    margin-right: 16px;
+    margin-top: 4px;
+  }
+
+  ion-label {
+    h2 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #aaa;
+      margin: 0 0 4px 0;
+      text-transform: uppercase;
+    }
+    p {
+      font-size: 1.1rem;
+      color: #fff;
+      margin: 0;
+    }
+  }
+}
+
+.detail-item:last-child {
+  margin-bottom: 0;
+}
+
+.activities-title {
+  color: #667eea;
+  padding: 0 16px;
+}
+
+ion-list {
+  --background: transparent;
+  background: transparent;
+  padding: 0;
+
+  ion-item {
+    --background: transparent;
+    color: #f5f5f5;
+  }
+}
+
+ion-spinner {
+  --color: #667eea;
+}
+
+// Estilos para el FAB
+ion-fab-button {
+  --background: #667eea;
+}
+
+ion-fab-button[color="danger"] {
+  --background: #eb445a;
+}
+
+ion-fab-button[color="tertiary"] {
+  --background: #6f42c1;
+}

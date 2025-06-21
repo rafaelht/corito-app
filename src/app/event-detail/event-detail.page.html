@@ -1,0 +1,97 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text="" color="black"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ event?.title || 'Detalles del Evento' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="isLoading" class="ion-text-center ion-padding">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+
+  <div *ngIf="!isLoading && event">
+    <div class="header-container" [style.background-image]="'url(/assets/icon/event-bg.jpg)'">
+      <div class="header-overlay"></div>
+      <h1 class="event-title">{{ event.title }}</h1>
+      <p class="event-subtitle">{{ event.date | date:'fullDate' }}</p>
+    </div>
+
+    <ion-grid class="ion-padding">
+      <ion-row>
+        <ion-col size="12">
+          <ion-card class="detail-card">
+            <ion-card-content>
+              <div class="detail-item">
+                <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+                <ion-label>
+                  <h2>Descripción</h2>
+                  <p>{{ event.description || 'No hay descripción para este evento.' }}</p>
+                </ion-label>
+              </div>
+
+              <div class="detail-item">
+                <ion-icon name="location-outline" slot="start"></ion-icon>
+                <ion-label>
+                  <h2>Ubicación</h2>
+                  <p>{{ event.location }}</p>
+                </ion-label>
+              </div>
+
+              <div class="detail-item">
+                <ion-icon name="time-outline" slot="start"></ion-icon>
+                <ion-label>
+                  <h2>Hora</h2>
+                  <p>{{ event.date + 'T' + event.time | date:'h:mm a' }}</p>
+                </ion-label>
+              </div>
+
+              <div class="detail-item">
+                <ion-icon name="people-outline" slot="start"></ion-icon>
+                <ion-label>
+                  <h2>Máx. Invitados</h2>
+                  <p>{{ event.max_guests || 'Sin límite' }}</p>
+                </ion-label>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf="event.activities && event.activities.length > 0">
+        <ion-col size="12">
+          <ion-card class="detail-card">
+            <ion-card-header>
+              <ion-card-title class="activities-title">Actividades</ion-card-title>
+            </ion-card-header>
+            <ion-list lines="full">
+              <ion-item *ngFor="let activity of event.activities">
+                <ion-icon name="checkmark-circle-outline" slot="start" color="success"></ion-icon>
+                <ion-label>{{ activity }}</ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+
+  <!-- Botones de Acción Flotantes -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="!isLoading && event">
+    <ion-fab-button>
+      <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="confirmDelete()" color="danger" data-desc="Eliminar Evento">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="editEvent()" color="tertiary" data-desc="Editar Evento">
+        <ion-icon name="create-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+</ion-content>

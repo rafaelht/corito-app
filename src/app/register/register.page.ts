@@ -55,6 +55,12 @@ export class RegisterPage implements OnInit {
     const { data, error } = await this.supabase.client.auth.signUp({
       email: this.email,
       password: this.password,
+      options: {
+        data: {
+          first_name: this.firstName,
+          last_name: this.lastName,
+        },
+      },
     });
 
     this.loading = false;

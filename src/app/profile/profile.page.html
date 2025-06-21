@@ -1,13 +1,69 @@
-<ion-header [translucent]="true">
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>profile</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text="" color="black"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mi Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">profile</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div *ngIf="isLoading" class="ion-text-center ion-padding">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+
+  <div *ngIf="!isLoading">
+    <div class="top-section">
+      <ion-avatar>
+        <!-- Aquí iría la lógica del avatar en el futuro -->
+        <ion-icon name="person-circle" class="fallback-avatar"></ion-icon>
+      </ion-avatar>
+      <ion-button fill="clear" size="small" class="edit-avatar-btn">(Editar foto)</ion-button>
+    </div>
+
+    <form [formGroup]="profileForm" (ngSubmit)="updateProfile()" class="ion-padding">
+      <ion-item>
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input [value]="userEmail" readonly="true" color="medium"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="stacked">Nombre de Usuario</ion-label>
+        <ion-input formControlName="username" placeholder="Tu nombre de usuario" required></ion-input>
+      </ion-item>
+      <div *ngIf="profileForm.get('username')?.invalid && profileForm.get('username')?.touched" class="error-message">
+        <ion-note color="danger" *ngIf="profileForm.get('username')?.errors?.['required']">
+          El nombre de usuario es requerido.
+        </ion-note>
+        <ion-note color="danger" *ngIf="profileForm.get('username')?.errors?.['minlength']">
+          Debe tener al menos 3 caracteres.
+        </ion-note>
+      </div>
+
+      <ion-item>
+        <ion-label position="stacked">Nombre</ion-label>
+        <ion-input formControlName="first_name" placeholder="Tu nombre"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Apellido</ion-label>
+        <ion-input formControlName="last_name" placeholder="Tu apellido"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Sitio Web</ion-label>
+        <ion-input formControlName="website" placeholder="https://tu-web.com"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" type="submit" [disabled]="profileForm.invalid" class="ion-margin-top">
+        Actualizar Perfil
+      </ion-button>
+    </form>
+
+    <div class="ion-padding">
+      <ion-button expand="block" fill="outline" color="danger" (click)="signOut()">
+        Cerrar Sesión
+      </ion-button>
+    </div>
+  </div>
 </ion-content>

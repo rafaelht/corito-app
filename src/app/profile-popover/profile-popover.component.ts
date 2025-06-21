@@ -5,25 +5,20 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-profile-popover',
+  templateUrl: './profile-popover.component.html',
+  styleUrls: ['./profile-popover.component.scss'],
   standalone: true,
   imports: [IonicModule, CommonModule],
-  template: `
-    <ion-list>
-      <ion-item lines="none">
-        <ion-icon slot="start" name="person-circle-outline"></ion-icon>
-        <ion-label>{{ userEmail }}</ion-label>
-      </ion-item>
-      <ion-item button (click)="logout()">
-        <ion-icon slot="start" name="log-out-outline"></ion-icon>
-        <ion-label>Cerrar sesión</ion-label>
-      </ion-item>
-    </ion-list>
-  `,
 })
 export class ProfilePopoverComponent {
   @Input() userEmail: string = '';
 
   constructor(private router: Router, private popoverCtrl: PopoverController) {}
+
+  async viewProfile() {
+    await this.popoverCtrl.dismiss();
+    this.router.navigateByUrl('/profile');
+  }
 
   async logout() {
     localStorage.clear();

@@ -20,19 +20,24 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadComponent: () => import('./home/home.page').then(m => m.HomePage)
   },
   {
-  path: 'home',
-  loadChildren: () =>
-    import('./home/home.page').then((m) => m.HomePage),
-},
-  {
     path: 'profile',
-    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+    loadComponent: () => import('./profile/profile.page').then( m => m.ProfilePage)
+  },
+  {
+    path: 'create-event',
+    loadComponent: () => import('./create-event/create-event.page').then(m => m.CreateEventPage)
+  },
+  {
+    path: 'edit-event/:id',
+    loadComponent: () => import('./create-event/create-event.page').then(m => m.CreateEventPage)
+  },
+  {
+    path: 'event-detail/:id',
+    loadComponent: () => import('./event-detail/event-detail.page').then( m => m.EventDetailPage)
   }
-
-
 ]
 
 @NgModule({
