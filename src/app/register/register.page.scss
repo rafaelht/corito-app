@@ -4,6 +4,12 @@ ion-content {
   background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
 }
 
+ion-toolbar {
+  --background: transparent;
+  --color: #fff;
+  --padding-top: 24px;
+}
+
 .back-wrapper {
   align-self: flex-start;
   margin-bottom: 1rem;

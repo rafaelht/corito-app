@@ -4,6 +4,7 @@ ion-content {
 
 ion-toolbar {
   --background: transparent;
+  --padding-top: 24px;
   position: absolute;
   top: 0;
   left: 0;
@@ -13,14 +14,12 @@ ion-toolbar {
 }
 
 ion-back-button {
-  background: rgba(44, 44, 46, 0.7);
-  border-radius: 50%;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  --background: transparent;
+  --color: white;
 }
 
 .header-container {
-  height: 250px;
+  height: 200px;
   background-size: cover;
   background-position: center;
   position: relative;
