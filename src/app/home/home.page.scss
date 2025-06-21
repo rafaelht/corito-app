@@ -16,13 +16,32 @@ ion-toolbar {
   min-height: 60px;
 }
 
-.page-title {
-  color: #f4f5f8;
-  font-weight: 800;
-  font-size: 1.9rem;
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.home-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  text-shadow: 0px 2px 4px rgba(0,0,0,0.3);
+  letter-spacing: 0.3rem;
+  margin: 0;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(45deg, #fff, #e0e0e0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (min-width: 768px) {
+  .home-title {
+    font-size: 2.5rem;
+    letter-spacing: 0.5rem;
+  }
 }
 
 .profile-button {

@@ -19,9 +19,10 @@
       <p class="event-subtitle">{{ event.date | date:'fullDate' }}</p>
     </div>
 
-    <ion-grid class="ion-padding">
-      <ion-row>
-        <ion-col size="12">
+    <ion-grid class="ion-padding main-grid">
+      <ion-row class="ion-justify-content-center">
+        <!-- Columna de Detalles -->
+        <ion-col size="12" size-lg="7">
           <ion-card class="detail-card">
             <ion-card-content>
               <div class="detail-item">
@@ -58,11 +59,10 @@
             </ion-card-content>
           </ion-card>
         </ion-col>
-      </ion-row>
 
-      <ion-row *ngIf="event.activities && event.activities.length > 0">
-        <ion-col size="12">
-          <ion-card class="detail-card">
+        <!-- Columna de Actividades -->
+        <ion-col size="12" size-lg="5">
+          <ion-card class="detail-card" *ngIf="event.activities && event.activities.length > 0">
             <ion-card-header>
               <ion-card-title class="activities-title">Actividades</ion-card-title>
             </ion-card-header>

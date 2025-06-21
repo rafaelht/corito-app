@@ -1,42 +1,73 @@
 <ion-content class="ion-padding">
-  <ion-grid class="ion-text-center" style="height: 100%;">
-    <ion-row class="ion-justify-content-center" style="margin-top: 10vh;">
-      <ion-col size="12" size-md="4">
-
-        <form (submit)="login()">
-    <div class="logo-header">
-      <div class="logo-box">
-        <h1 class="logo-text">CORITO</h1>
-      </div>
+  <div class="auth-container">
+    <div class="auth-header">
+      <h1 class="auth-title">CORITOS</h1>
     </div>
-    <ion-item>
-      <ion-label position="floating">Correo</ion-label>
-      <ion-input [(ngModel)]="email" name="email" type="email" required></ion-input>
-    </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Contraseña</ion-label>
-      <ion-input [(ngModel)]="password" name="password" type="password" required></ion-input>
-    </ion-item>
+    <div class="auth-form-container">
+      <form (submit)="login()" class="auth-form">
+        <div class="form-group">
+          <ion-item class="custom-input">
+            <ion-label position="floating">Correo electrónico</ion-label>
+            <ion-input 
+              [(ngModel)]="email" 
+              name="email" 
+              type="email" 
+              required
+              class="input-field">
+            </ion-input>
+          </ion-item>
+        </div>
 
-    <ion-button expand="block" type="submit" [disabled]="loading">Iniciar sesión</ion-button>
-  </form>
+        <div class="form-group">
+          <ion-item class="custom-input">
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input 
+              [(ngModel)]="password" 
+              name="password" 
+              type="password" 
+              required
+              class="input-field">
+            </ion-input>
+          </ion-item>
+        </div>
 
-  <ion-button expand="block" color="medium" (click)="goToRegister()">
-  Registrarse
-  </ion-button>
+        <div class="button-group">
+          <ion-button 
+            expand="block" 
+            type="submit" 
+            [disabled]="loading"
+            class="primary-button">
+            <ion-icon name="log-in-outline" slot="start"></ion-icon>
+            Iniciar sesión
+          </ion-button>
 
-  <ion-text color="danger" *ngIf="message">
-    <p class="ion-padding-start">{{ message }}</p>
-  </ion-text>
+          <ion-button 
+            expand="block" 
+            fill="outline"
+            (click)="goToRegister()"
+            class="secondary-button">
+            <ion-icon name="person-add-outline" slot="start"></ion-icon>
+            Registrarse
+          </ion-button>
+        </div>
 
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+        <div class="error-message" *ngIf="message">
+          <ion-text color="danger">
+            <p>{{ message }}</p>
+          </ion-text>
+        </div>
+      </form>
+    </div>
+  </div>
 </ion-content>
-<ion-footer>
-  <ion-toolbar class="custom-toolbar">
-    <p class="copyright">By &nbsp;<a>Rafael H.</a></p>
-  </ion-toolbar>
+
+<ion-footer class="custom-footer">
+  <div class="footer-content">
+    <p class="footer-text">
+      By
+      <a href="#" class="footer-link">Rafael H.</a>
+    </p>
+  </div>
 </ion-footer>
 

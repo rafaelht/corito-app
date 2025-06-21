@@ -1,9 +1,20 @@
 ion-content {
-  --background: #1c1c1e;
+  --background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+}
+
+ion-header {
+  &::after {
+    display: none;
+  }
 }
 
 ion-toolbar {
-  --background: #1c1c1e;
+  --background: transparent;
+  --color: #fff;
+}
+
+ion-back-button {
+  --color: #fff !important;
 }
 
 .top-section {
@@ -15,51 +26,63 @@ ion-toolbar {
   ion-avatar {
     width: 100px;
     height: 100px;
-    border: 3px solid #667eea;
+    border: 3px solid rgba(102, 126, 234, 0.7);
     padding: 3px;
-    background: #2c2c2e;
+    background: rgba(44, 44, 46, 0.5);
 
     .fallback-avatar {
       font-size: 100px;
-      color: #667eea;
+      color: rgba(102, 126, 234, 0.9);
     }
   }
 
   .edit-avatar-btn {
-    --color: #667eea;
+    --color: #a0a0a0;
     text-transform: none;
     font-weight: 500;
   }
 }
 
+form {
+  background: rgba(44, 44, 46, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 16px;
+}
+
 ion-item {
-  --background: #2c2c2e;
-  --border-radius: 10px;
-  margin-bottom: 12px;
-  --highlight-color-focused: #667eea;
+  --background: rgba(255, 255, 255, 0.05);
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --inner-padding-end: 0;
+  --min-height: 58px;
+  border-radius: 12px;
+  margin: 8px 16px 16px 16px;
+  border: 1px solid transparent;
 }
 
 ion-label[position="stacked"] {
-  --color: #a0a0a0;
-  font-size: 0.9rem;
-  font-weight: 500;
-  margin-bottom: 4px;
+  --color: #b0b0b0;
 }
 
 ion-input {
   --color: #fff;
 }
 
-ion-button[type="submit"] {
-  --background: #667eea;
-  --border-radius: 10px;
+ion-item.item-has-focus {
+  border: 1px solid #667eea;
+  background: rgba(102, 126, 234, 0.1);
 }
 
-ion-spinner {
-  --color: #667eea;
+.update-button {
+  margin: 16px;
+  width: calc(100% - 32px);
+  --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
-.error-message {
-  padding: 0 16px 8px;
-  font-size: 0.8rem;
+.sign-out-button {
+  --border-color: #eb445a;
+  --color: #eb445a;
 }

@@ -1,5 +1,5 @@
 ion-content {
-  --background: #1c1c1e;
+  --background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
 }
 
 ion-toolbar {
@@ -9,6 +9,7 @@ ion-toolbar {
   left: 0;
   right: 0;
   z-index: 10;
+  -webkit-backdrop-filter: blur(8px);
 }
 
 ion-back-button {
@@ -19,7 +20,7 @@ ion-back-button {
 }
 
 .header-container {
-  height: 200px;
+  height: 250px;
   background-size: cover;
   background-position: center;
   position: relative;
@@ -28,6 +29,7 @@ ion-back-button {
   justify-content: flex-end;
   padding: 20px;
   color: #fff;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
 }
 
 .header-overlay {
@@ -49,11 +51,18 @@ ion-back-button {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 4px;
+  margin-top: 0;
 }
 
 .event-subtitle {
   font-size: 1rem;
   margin-top: 0;
+}
+
+.main-grid {
+  margin-top: -50px;
+  position: relative;
+  z-index: 2;
 }
 
 .detail-card {

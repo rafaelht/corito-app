@@ -1,60 +1,110 @@
 <ion-content class="ion-padding">
-  <ion-grid class="ion-text-center">
-    <ion-row class="ion-justify-content-center" style="margin-top: 10vh;">
-      <ion-col size="12" size-md="4" class="form-col">
+  <div class="register-container">
+    <!-- Botón Back -->
+    <div class="back-wrapper">
+      <ion-button fill="clear" (click)="goBack()" class="back-button">
+        <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+        
+      </ion-button>
+    </div>
 
-        <!-- Botón Back alineado a la izquierda del contenido -->
-        <div class="back-wrapper">
-          <ion-button fill="clear" (click)="goBack()" class="back-button">
-            <ion-icon slot="start" name="caret-back"></ion-icon>
-            Back
-          </ion-button>
-        </div>
+    <!-- Header -->
+    <div class="register-header">
+      <h1 class="register-title">VAMO ARRIBA</h1>
+    </div>
 
-        <!-- Logo -->
-        <div class="logo-header">
-          <div class="logo-box">
-            <h1 class="logo-text">VAMO ARRIBA</h1>
-          </div>
-        </div>
-
-        <!-- Formulario -->
-        <form (submit)="register()">
-          <ion-item>
+    <!-- Formulario -->
+    <div class="register-form-container">
+      <form (submit)="register()" class="register-form">
+        <div class="form-group">
+          <ion-item class="custom-input">
             <ion-label position="floating">Nombre</ion-label>
-            <ion-input [(ngModel)]="firstName" name="firstName" required></ion-input>
+            <ion-input 
+              [(ngModel)]="firstName" 
+              name="firstName" 
+              required
+              class="input-field">
+            </ion-input>
           </ion-item>
+        </div>
 
-          <ion-item>
+        <div class="form-group">
+          <ion-item class="custom-input">
             <ion-label position="floating">Apellido</ion-label>
-            <ion-input [(ngModel)]="lastName" name="lastName" required></ion-input>
+            <ion-input 
+              [(ngModel)]="lastName" 
+              name="lastName" 
+              required
+              class="input-field">
+            </ion-input>
           </ion-item>
+        </div>
 
-          <ion-item>
-            <ion-label position="floating">Correo</ion-label>
-            <ion-input [(ngModel)]="email" name="email" type="email" required></ion-input>
+        <div class="form-group">
+          <ion-item class="custom-input">
+            <ion-label position="floating">Correo electrónico</ion-label>
+            <ion-input 
+              [(ngModel)]="email" 
+              name="email" 
+              type="email" 
+              required
+              class="input-field">
+            </ion-input>
           </ion-item>
+        </div>
 
-          <ion-item>
-            <ion-label position="floating">Confirmar Correo</ion-label>
-            <ion-input [(ngModel)]="confirmEmail" name="confirmEmail" type="email" required></ion-input>
+        <div class="form-group">
+          <ion-item class="custom-input">
+            <ion-label position="floating">Confirmar correo</ion-label>
+            <ion-input 
+              [(ngModel)]="confirmEmail" 
+              name="confirmEmail" 
+              type="email" 
+              required
+              class="input-field">
+            </ion-input>
           </ion-item>
+        </div>
 
-          <ion-item>
+        <div class="form-group">
+          <ion-item class="custom-input">
             <ion-label position="floating">Contraseña</ion-label>
-            <ion-input [(ngModel)]="password" name="password" type="password" required></ion-input>
+            <ion-input 
+              [(ngModel)]="password" 
+              name="password" 
+              type="password" 
+              required
+              class="input-field">
+            </ion-input>
           </ion-item>
+        </div>
 
-          <ion-button expand="block" type="submit" [disabled]="loading">
+        <div class="button-group">
+          <ion-button 
+            expand="block" 
+            type="submit" 
+            [disabled]="loading"
+            class="primary-button">
+            <ion-icon name="person-add-outline" slot="start"></ion-icon>
             Registrarse
           </ion-button>
+        </div>
 
-          <ion-text *ngIf="message" [ngClass]="messageClass">
-            <p class="ion-padding-start">{{ message }}</p>
+        <div class="message-container" *ngIf="message">
+          <ion-text [ngClass]="messageClass">
+            <p>{{ message }}</p>
           </ion-text>
-        </form>
-
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+        </div>
+      </form>
+    </div>
+  </div>
 </ion-content>
+
+<ion-footer class="custom-footer">
+  <div class="footer-content">
+    <p class="footer-text">
+      By
+      <a href="#" class="footer-link">Rafael H.</a>
+    </p>
+  </div>
+</ion-footer>

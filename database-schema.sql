@@ -80,10 +80,9 @@ COMMENT ON COLUMN events.votes IS 'JSON con votaciones para ubicación, fecha y 
 -- Crear tabla para perfiles públicos de usuario
 CREATE TABLE IF NOT EXISTS profiles (
   id UUID REFERENCES auth.users ON DELETE CASCADE NOT NULL PRIMARY KEY,
-  updated_at TIMESTAMP WITH TIME ZONE,
-  username TEXT UNIQUE,
   first_name TEXT,
   last_name TEXT,
+  username TEXT UNIQUE,
   avatar_url TEXT,
   website TEXT,
 
@@ -94,13 +93,13 @@ CREATE TABLE IF NOT EXISTS profiles (
 ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
 
 -- Políticas de Seguridad para perfiles
-CREATE POLICY "Public profiles are viewable by everyone." ON profiles
+CREATE POLICY "Los perfiles publicos son visibles para todos." ON profiles
   FOR SELECT USING (true);
 
-CREATE POLICY "Users can insert their own profile." ON profiles
+CREATE POLICY "Los usuarios pueden insertar su propio perfil." ON profiles
   FOR INSERT WITH CHECK (auth.uid() = id);
 
-CREATE POLICY "Users can update own profile." ON profiles
+CREATE POLICY "Los usuarios pueden actualizar su propio perfil." ON profiles
   FOR UPDATE USING (auth.uid() = id);
 
 -- Trigger para crear un perfil automáticamente para nuevos usuarios
@@ -108,12 +107,11 @@ CREATE POLICY "Users can update own profile." ON profiles
 CREATE OR REPLACE FUNCTION public.handle_new_user()
 RETURNS TRIGGER AS $$
 BEGIN
-  INSERT INTO public.profiles (id, first_name, last_name, avatar_url)
+  INSERT INTO public.profiles (id, first_name, last_name)
   VALUES (
     new.id, 
     new.raw_user_meta_data->>'first_name', 
-    new.raw_user_meta_data->>'last_name',
-    new.raw_user_meta_data->>'avatar_url'
+    new.raw_user_meta_data->>'last_name'
   );
   RETURN new;
 END;
@@ -131,4 +129,31 @@ COMMENT ON COLUMN profiles.id IS 'Referencia al ID del usuario en auth.users.';
 -- ALTER TABLE profiles ADD COLUMN first_name TEXT;
 -- ALTER TABLE profiles ADD COLUMN last_name TEXT;
 -- UPDATE profiles SET first_name = split_part(full_name, ' ', 1), last_name = substring(full_name from position(' ' in full_name) + 1) WHERE full_name IS NOT NULL;
--- ALTER TABLE profiles DROP COLUMN full_name; 
+-- ALTER TABLE profiles DROP COLUMN full_name;
+
+-- 3. Configurar Supabase Storage
+-- ---------------------------------
+-- Ve a la sección de "Storage" en tu panel de Supabase y crea un nuevo "Bucket".
+-- - Nombre del Bucket: avatars
+-- - Acceso Público: Marca esta casilla (déjala en ON)
+--
+-- Después, ve a la pestaña de "Policies" para este bucket y crea las siguientes políticas.
+-- Esto asegura que los usuarios solo puedan gestionar sus propias fotos.
+--
+-- PERMISO PARA VER AVATARES (SELECT):
+-- Este permiso es público porque el bucket es público. No necesitas crear una política.
+--
+-- PERMISO PARA SUBIR AVATARES (INSERT):
+-- Nombre: allow_user_avatar_upload
+-- Operación: INSERT
+-- Usando la expresión: auth.uid() IS NOT NULL
+--
+-- PERMISO PARA ACTUALIZAR AVATARES (UPDATE):
+-- Nombre: allow_user_avatar_update
+-- Operación: UPDATE
+-- Usando la expresión: auth.uid() = (storage.foldername(name))[1]::uuid
+--
+-- Reemplaza el contenido de la política con el siguiente código SQL:
+-- create policy "allow_user_avatar_update"
+-- on storage.objects for update
+-- with check (auth.uid() = (storage.foldername(name))[1]::uuid); 
