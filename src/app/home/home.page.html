@@ -1,24 +1,14 @@
-<ion-content class="home-content">
-  
-  <ion-grid class="ion-text-center ion-padding-top">
-    <ion-row class="ion-justify-content-center ion-align-items-center">
-      <ion-col size="12" size-md="4">
-        <div class="logo-box">
-          <div class="logo-header">
-            <h1 class="logo-text">BIENVENIDO</h1>
-            <ion-button
-              fill="clear"
-              class="profile-button"
-              (click)="openPopover($event)">
-              <ion-icon name="person-circle-outline" slot="icon-only"></ion-icon>
-            </ion-button>
-            
-          </div>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button class="profile-button" (click)="openPopover($event)">
+        <ion-icon slot="icon-only" name="person-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
+<ion-content class="home-content">
   <!-- Lista de Eventos -->
   <div class="events-container">
     <h2 class="events-title">Mis Coritos</h2>

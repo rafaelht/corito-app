@@ -1,3 +1,40 @@
+ion-header {
+  background: transparent;
+  position: absolute;
+  width: 100%;
+  &::after {
+    display: none;
+  }
+}
+
+ion-toolbar {
+  --background: transparent;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 8px;
+  --padding-bottom: 8px;
+  min-height: 60px;
+}
+
+.page-title {
+  color: #f4f5f8;
+  font-weight: 800;
+  font-size: 1.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-shadow: 0px 2px 4px rgba(0,0,0,0.3);
+}
+
+.profile-button {
+  --background: rgba(255, 255, 255, 0.1);
+  --background-hover: rgba(255, 255, 255, 0.15);
+  --border-radius: 50%;
+  --width: 44px;
+  --height: 44px;
+  --color: #fff;
+  font-size: 1.5rem;
+}
+
 ion-content {
   --background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
   display: flex;
@@ -27,11 +64,6 @@ ion-content {
   letter-spacing: 2px;
   margin: 0;
   text-transform: uppercase;
-}
-
-.profile-button {
-  --color: white;
-  font-size: 24px;
 }
 
 .styled-hr {
@@ -85,13 +117,14 @@ ion-content {
 }
 
 .events-container {
-  padding: 0 16px;
+  padding: 16px;
 }
 
 .events-title {
   color: #e0e0e0;
   font-weight: 700;
   font-size: 1.5rem;
+  margin-top: 16px;
   margin-bottom: 16px;
   padding-left: 8px;
   border-left: 4px solid #667eea;

@@ -5,14 +5,13 @@ import { RouterModule, Routes } from '@angular/router'
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
     path: 'auth',
     loadComponent: () => import('./auth/auth.page').then(m => m.AuthPage)
-  },
-  // otras rutas aquí
-  {
-    path: '',
-    redirectTo: 'auth',
-    pathMatch: 'full'
   },
   {
     path: 'register',
@@ -37,7 +36,7 @@ const routes: Routes = [
   {
     path: 'event-detail/:id',
     loadComponent: () => import('./event-detail/event-detail.page').then( m => m.EventDetailPage)
-  }
+  },
 ]
 
 @NgModule({

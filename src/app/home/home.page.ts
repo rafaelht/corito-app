@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicModule, AlertController, PopoverController, IonContent } from '@ionic/angular';
+import { IonicModule, AlertController, PopoverController } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { SupabaseService } from '../supabase.service';
-import { ProfilePopoverComponent } from '../profile-popover/profile-popover.component';
 import { EventService } from '../services/event.service';
 import { Event as AppEvent } from '../models/event.interface';
+import { ProfilePopoverComponent } from '../profile-popover/profile-popover.component';
 
 @Component({
   selector: 'app-home',
@@ -42,6 +42,7 @@ export class HomePage implements OnInit {
       this.loadUserEvents();
     } else {
       this.isLoading = false;
+      this.router.navigateByUrl('/auth');
     }
   }
 
@@ -64,13 +65,11 @@ export class HomePage implements OnInit {
       component: ProfilePopoverComponent,
       event: ev,
       translucent: true,
-      showBackdrop: true,
       componentProps: {
-        userEmail: this.userEmail, // 👈 Pasamos el email al popover
+        userEmail: this.userEmail,
       },
     });
-
-    await popover.present();
+    return await popover.present();
   }
 
   // Este método queda por si llegas a usar logout desde Home directamente

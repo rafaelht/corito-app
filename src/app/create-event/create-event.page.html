@@ -1,152 +1,157 @@
-<ion-header class="ion-no-border">
+<ion-content [fullscreen]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home" text="" color="black"></ion-back-button>
+      <ion-back-button defaultHref="/home" text=""></ion-back-button>
     </ion-buttons>
     <ion-title>{{ pageTitle }}</ion-title>
   </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
   <form [formGroup]="eventForm" (ngSubmit)="createEvent()">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>Información del Evento</ion-card-title>
-        <ion-card-subtitle>Completa los detalles de tu reunión</ion-card-subtitle>
-      </ion-card-header>
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <!-- Columna de Información del Evento -->
+        <ion-col size="12" size-lg="7">
+          <ion-card>
+            <div class="section-header">
+              <h2>Información del Evento</h2>
+              <p>Completa los detalles de tu reunión</p>
+            </div>
+            <ion-card-content>
+              <!-- Título del evento -->
+              <ion-item>
+                <ion-label position="stacked">Título del Evento *</ion-label>
+                <ion-input 
+                  formControlName="title" 
+                  placeholder="Ej: Reunión familiar de Navidad"
+                  type="text">
+                </ion-input>
+              </ion-item>
+              <ion-note color="danger" *ngIf="eventForm.get('title')?.invalid && eventForm.get('title')?.touched">
+                El título es requerido
+              </ion-note>
 
-      <ion-card-content>
-        <!-- Título del evento -->
-        <ion-item>
-          <ion-label position="stacked">Título del Evento *</ion-label>
-          <ion-input 
-            formControlName="title" 
-            placeholder="Ej: Reunión familiar de Navidad"
-            type="text">
-          </ion-input>
-        </ion-item>
-        <ion-note color="danger" *ngIf="eventForm.get('title')?.invalid && eventForm.get('title')?.touched">
-          El título es requerido
-        </ion-note>
+              <!-- Descripción -->
+              <ion-item>
+                <ion-label position="stacked">Descripción</ion-label>
+                <ion-textarea 
+                  formControlName="description" 
+                  placeholder="Describe tu evento..."
+                  rows="3">
+                </ion-textarea>
+              </ion-item>
 
-        <!-- Descripción -->
-        <ion-item>
-          <ion-label position="stacked">Descripción</ion-label>
-          <ion-textarea 
-            formControlName="description" 
-            placeholder="Describe tu evento..."
-            rows="3">
-          </ion-textarea>
-        </ion-item>
+              <!-- Fecha -->
+              <ion-item button="true" (click)="presentDateModal()">
+                <ion-label position="stacked">Fecha *</ion-label>
+                <ion-input 
+                  [value]="formattedDate"
+                  readonly="true"
+                  placeholder="Selecciona una fecha">
+                </ion-input>
+              </ion-item>
 
-        <!-- Fecha -->
-        <ion-item button="true" (click)="presentDateModal()">
-          <ion-label position="stacked">Fecha *</ion-label>
-          <ion-input 
-            [value]="formattedDate"
-            readonly="true"
-            placeholder="Selecciona una fecha">
-          </ion-input>
-        </ion-item>
+              <!-- Hora -->
+              <ion-item button="true" (click)="presentTimeModal()">
+                <ion-label position="stacked">Hora *</ion-label>
+                <ion-input
+                  [value]="formattedTime"
+                  readonly="true"
+                  placeholder="Selecciona una hora">
+                </ion-input>
+              </ion-item>
 
-        <!-- Hora -->
-        <ion-item button="true" (click)="presentTimeModal()">
-          <ion-label position="stacked">Hora *</ion-label>
-          <ion-input
-            [value]="formattedTime"
-            readonly="true"
-            placeholder="Selecciona una hora">
-          </ion-input>
-        </ion-item>
+              <!-- Ubicación -->
+              <ion-item>
+                <ion-label position="stacked">Ubicación *</ion-label>
+                <ion-input 
+                  formControlName="location" 
+                  placeholder="Ej: Parque Central, Restaurante XYZ"
+                  type="text">
+                </ion-input>
+              </ion-item>
+              <ion-note color="danger" *ngIf="eventForm.get('location')?.invalid && eventForm.get('location')?.touched">
+                La ubicación es requerida
+              </ion-note>
 
-        <!-- Ubicación -->
-        <ion-item>
-          <ion-label position="stacked">Ubicación *</ion-label>
-          <ion-input 
-            formControlName="location" 
-            placeholder="Ej: Parque Central, Restaurante XYZ"
-            type="text">
-          </ion-input>
-        </ion-item>
-        <ion-note color="danger" *ngIf="eventForm.get('location')?.invalid && eventForm.get('location')?.touched">
-          La ubicación es requerida
-        </ion-note>
+              <!-- Número máximo de invitados -->
+              <ion-item>
+                <ion-label position="stacked">Número máximo de invitados</ion-label>
+                <ion-input 
+                  formControlName="max_guests" 
+                  type="number"
+                  min="1"
+                  placeholder="Sin límite">
+                </ion-input>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
 
-        <!-- Número máximo de invitados -->
-        <ion-item>
-          <ion-label position="stacked">Número máximo de invitados</ion-label>
-          <ion-input 
-            formControlName="max_guests" 
-            type="number"
-            min="1"
-            placeholder="Sin límite">
-          </ion-input>
-        </ion-item>
-      </ion-card-content>
-    </ion-card>
+        <!-- Columna de Actividades y Acciones -->
+        <ion-col size="12" size-lg="5">
+          <!-- Actividades -->
+          <ion-card>
+            <div class="section-header">
+              <h2>Actividades</h2>
+              <p>Agrega las actividades que se realizarán</p>
+            </div>
+            <ion-card-content>
+              <ion-item>
+                <ion-input 
+                  #activityInput
+                  placeholder="Agregar actividad..."
+                  (keyup.enter)="addActivity(activityInput.value ?? ''); activityInput.value = ''">
+                </ion-input>
+                <ion-button 
+                  slot="end" 
+                  fill="clear"
+                  (click)="addActivity(activityInput.value ?? ''); activityInput.value = ''">
+                  <ion-icon name="add"></ion-icon>
+                </ion-button>
+              </ion-item>
 
-    <!-- Actividades -->
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>Actividades</ion-card-title>
-        <ion-card-subtitle>Agrega las actividades que se realizarán</ion-card-subtitle>
-      </ion-card-header>
+              <ion-list>
+                <ion-item *ngFor="let activity of activities; let i = index">
+                  <ion-label>{{ activity }}</ion-label>
+                  <ion-button 
+                    slot="end" 
+                    fill="clear" 
+                    color="danger"
+                    (click)="removeActivity(i)">
+                    <ion-icon name="trash"></ion-icon>
+                  </ion-button>
+                </ion-item>
+              </ion-list>
 
-      <ion-card-content>
-        <ion-item>
-          <ion-input 
-            #activityInput
-            placeholder="Agregar actividad..."
-            (keyup.enter)="addActivity(activityInput.value ?? ''); activityInput.value = ''">
-          </ion-input>
-          <ion-button 
-            slot="end" 
-            fill="clear"
-            (click)="addActivity(activityInput.value ?? ''); activityInput.value = ''">
-            <ion-icon name="add"></ion-icon>
-          </ion-button>
-        </ion-item>
+              <ion-note *ngIf="activities.length === 0" color="medium">
+                No hay actividades agregadas
+              </ion-note>
+            </ion-card-content>
+          </ion-card>
 
-        <ion-list>
-          <ion-item *ngFor="let activity of activities; let i = index">
-            <ion-label>{{ activity }}</ion-label>
+          <!-- Botones de acción -->
+          <div class="ion-padding action-buttons">
             <ion-button 
-              slot="end" 
-              fill="clear" 
-              color="danger"
-              (click)="removeActivity(i)">
-              <ion-icon name="trash"></ion-icon>
+              expand="block" 
+              type="submit" 
+              [disabled]="eventForm.invalid || isSubmitting">
+              <ion-icon name="create-outline" slot="start"></ion-icon>
+              {{ isSubmitting ? (isEditMode ? 'Actualizando...' : 'Creando...') : (isEditMode ? 'Actualizar Evento' : 'Crear Evento') }}
             </ion-button>
-          </ion-item>
-        </ion-list>
 
-        <ion-note *ngIf="activities.length === 0" color="medium">
-          No hay actividades agregadas
-        </ion-note>
-      </ion-card-content>
-    </ion-card>
-
-    <!-- Botones de acción -->
-    <div class="ion-padding">
-      <ion-button 
-        expand="block" 
-        type="submit" 
-        [disabled]="eventForm.invalid || isSubmitting">
-        <ion-icon name="create-outline" slot="start"></ion-icon>
-        {{ isSubmitting ? (isEditMode ? 'Actualizando...' : 'Creando...') : (isEditMode ? 'Actualizar Evento' : 'Crear Evento') }}
-      </ion-button>
-
-      <ion-button 
-        *ngIf="!isEditMode"
-        expand="block" 
-        fill="outline" 
-        color="medium"
-        (click)="saveDraft()"
-        [disabled]="isSubmitting">
-        <ion-icon name="save-outline" slot="start"></ion-icon>
-        Guardar como Borrador
-      </ion-button>
-    </div>
+            <ion-button 
+              *ngIf="!isEditMode"
+              expand="block" 
+              fill="outline" 
+              (click)="saveDraft()"
+              [disabled]="isSubmitting">
+              <ion-icon name="save-outline" slot="start"></ion-icon>
+              Guardar como Borrador
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </form>
 
   <!-- Modales para Fecha y Hora -->
