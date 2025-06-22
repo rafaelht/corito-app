@@ -32,11 +32,12 @@
         <ion-col size="12" size-md="4" size-lg="4" *ngFor="let event of events">
           <ion-card class="event-card" [routerLink]="['/event-detail', event.id]">
             <ion-card-header>
+              <ion-card-title>{{ event.title }}</ion-card-title>
+              <div class="card-divider"></div>
+              <ion-card-subtitle>{{ event.date | date: 'fullDate' }}</ion-card-subtitle>
               <div class="card-title-container">
-                <ion-card-title>{{ event.title }}</ion-card-title>
                 <ion-badge *ngIf="event.status === 'draft'" color="medium">Borrador</ion-badge>
               </div>
-              <ion-card-subtitle>{{ event.date | date: 'fullDate' }}</ion-card-subtitle>
             </ion-card-header>
             <ion-card-content>
               <p><ion-icon name="location-outline" slot="start"></ion-icon> {{ event.location }}</p>

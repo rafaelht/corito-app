@@ -137,15 +137,37 @@ ion-badge {
 
 .event-card {
   ion-card-header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    
     ion-card-title {
       color: #ffffff;
       font-weight: 600;
+      margin-bottom: 0;
+      order: 1;
+    }
+    
+    .card-divider {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin: 12px 0 8px 0;
+      order: 2;
     }
     
     ion-card-subtitle {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: 12px;
-      margin-top: 8px;
+      padding-top: 0;
+      margin-top: 0;
+      order: 3;
+    }
+    
+    .card-title-container {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+      order: 1;
     }
   }
   
@@ -162,6 +184,11 @@ ion-badge {
       }
     }
   }
+}
+
+.create-event-fab {
+  margin-right: 16px;
+  margin-bottom: 16px;
 }
 
 .profile-button {
