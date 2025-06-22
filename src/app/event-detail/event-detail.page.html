@@ -1,8 +1,9 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home" text="" color="black"></ion-back-button>
+      <ion-back-button defaultHref="/home" text="" color="white"></ion-back-button>
     </ion-buttons>
+    <ion-title>Detalles del corito</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -21,17 +22,16 @@
     <ion-grid class="ion-padding main-grid">
       <ion-row class="ion-justify-content-center">
         <!-- Columna de Detalles -->
-        <ion-col size="12" size-lg="7">
+        <ion-col size="12" size-md="8">
           <ion-card class="detail-card">
             <ion-card-content>
               <div class="detail-item">
-                <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+                <ion-icon name="calendar-outline" slot="start"></ion-icon>
                 <ion-label>
-                  <h2>Descripción</h2>
-                  <p>{{ event.description || 'No hay descripción para este evento.' }}</p>
+                  <h2>Fecha y Hora</h2>
+                  <p>{{ event.date | date:'fullDate' }} a las {{ event.date + 'T' + event.time | date:'h:mm a' }}</p>
                 </ion-label>
               </div>
-
               <div class="detail-item">
                 <ion-icon name="location-outline" slot="start"></ion-icon>
                 <ion-label>
@@ -39,20 +39,18 @@
                   <p>{{ event.location }}</p>
                 </ion-label>
               </div>
-
-              <div class="detail-item">
-                <ion-icon name="time-outline" slot="start"></ion-icon>
-                <ion-label>
-                  <h2>Hora</h2>
-                  <p>{{ event.date + 'T' + event.time | date:'h:mm a' }}</p>
-                </ion-label>
-              </div>
-
-              <div class="detail-item">
+              <div class="detail-item" *ngIf="event.max_guests">
                 <ion-icon name="people-outline" slot="start"></ion-icon>
                 <ion-label>
-                  <h2>Máx. Invitados</h2>
-                  <p>{{ event.max_guests || 'Sin límite' }}</p>
+                  <h2>Invitados</h2>
+                  <p>Hasta {{ event.max_guests }} personas</p>
+                </ion-label>
+              </div>
+              <div class="detail-item">
+                <ion-icon name="reader-outline" slot="start"></ion-icon>
+                <ion-label>
+                  <h2>Descripción</h2>
+                  <p>{{ event.description || 'No hay descripción.' }}</p>
                 </ion-label>
               </div>
             </ion-card-content>
@@ -60,37 +58,43 @@
         </ion-col>
 
         <!-- Columna de Actividades -->
-        <ion-col size="12" size-lg="5">
-          <ion-card class="detail-card" *ngIf="event.activities && event.activities.length > 0">
-            <ion-card-header>
-              <ion-card-title class="activities-title">Actividades</ion-card-title>
-            </ion-card-header>
-            <ion-list lines="full">
-              <ion-item *ngFor="let activity of event.activities">
-                <ion-icon name="checkmark-circle-outline" slot="start" color="success"></ion-icon>
-                <ion-label>{{ activity }}</ion-label>
-              </ion-item>
-            </ion-list>
+        <ion-col size="12" size-md="8" *ngIf="event.activities && event.activities.length > 0">
+          <ion-card class="detail-card">
+            <ion-card-content>
+              <h2 class="activities-title">Actividades</h2>
+              <ion-list>
+                <ion-item *ngFor="let activity of event.activities">
+                  <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+                  <ion-label>{{ activity }}</ion-label>
+                </ion-item>
+              </ion-list>
+            </ion-card-content>
           </ion-card>
         </ion-col>
+        
+        <!-- Botones de Acción -->
+        <ion-col size="12" size-md="8" *ngIf="!isLoading && event && isOwner">
+          <ion-grid class="action-buttons">
+            <ion-row>
+              <ion-col>
+                <ion-button expand="block" (click)="editEvent()">
+                  <ion-icon name="create-outline" slot="start"></ion-icon>
+                  Editar
+                </ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button expand="block" color="danger" (click)="confirmDelete()">
+                  <ion-icon name="trash-outline" slot="start"></ion-icon>
+                  Eliminar
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+        
       </ion-row>
     </ion-grid>
 
   </div>
-
-  <!-- Botones de Acción Flotantes -->
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="!isLoading && event">
-    <ion-fab-button>
-      <ion-icon name="ellipsis-vertical-outline"></ion-icon>
-    </ion-fab-button>
-    <ion-fab-list side="top">
-      <ion-fab-button (click)="confirmDelete()" color="danger" data-desc="Eliminar Evento">
-        <ion-icon name="trash-outline"></ion-icon>
-      </ion-fab-button>
-      <ion-fab-button (click)="editEvent()" color="tertiary" data-desc="Editar Evento">
-        <ion-icon name="create-outline"></ion-icon>
-      </ion-fab-button>
-    </ion-fab-list>
-  </ion-fab>
 
 </ion-content>

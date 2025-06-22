@@ -1,38 +1,37 @@
-ion-content {
-  --background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-}
+/* Estilos específicos para la página de perfil */
 
 ion-header {
-  &::after {
-    display: none;
-  }
-}
-
-ion-toolbar {
   --background: transparent;
-  --color: #fff;
-  --padding-top: 24px;
-}
-
-ion-back-button {
-  --color: #fff !important;
+  background: transparent;
+  
+  ion-toolbar {
+    --background: transparent;
+    background: transparent;
+  }
+  
+  ion-title {
+    color: #e0e0e0;
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
 }
 
 .top-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 24px 0;
+  padding: 0;
+  margin-top: -10px;
 
   ion-avatar {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border: 3px solid rgba(102, 126, 234, 0.7);
     padding: 3px;
     background: rgba(44, 44, 46, 0.5);
 
     .fallback-avatar {
-      font-size: 100px;
+      font-size: 80px;
       color: rgba(102, 126, 234, 0.9);
     }
   }
@@ -54,27 +53,7 @@ form {
 }
 
 ion-item {
-  --background: rgba(255, 255, 255, 0.05);
-  --padding-start: 16px;
-  --padding-end: 16px;
-  --inner-padding-end: 0;
-  --min-height: 58px;
-  border-radius: 12px;
   margin: 8px 16px 16px 16px;
-  border: 1px solid transparent;
-}
-
-ion-label[position="stacked"] {
-  --color: #b0b0b0;
-}
-
-ion-input {
-  --color: #fff;
-}
-
-ion-item.item-has-focus {
-  border: 1px solid #667eea;
-  background: rgba(102, 126, 234, 0.1);
 }
 
 .update-button {

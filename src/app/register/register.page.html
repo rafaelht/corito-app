@@ -1,101 +1,143 @@
-<ion-content class="ion-padding auth-common">
-  <div class="container">
-    <!-- Botón Back -->
-    <div class="back-wrapper">
-      <ion-button fill="clear" (click)="goBack()" class="back-button">
-        <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+<ion-content class="auth-content">
+  <!-- Fondo con gradiente animado -->
+  <div class="background-animation">
+    <div class="gradient-overlay"></div>
+  </div>
+
+  <div class="auth-container">
+    <!-- Logo y título -->
+    <div class="brand-section">
+      <div class="logo-container">
+        <ion-icon name="calendar-outline" class="logo-icon"></ion-icon>
+      </div>
+      <h1 class="brand-title">Coritos</h1>
+      <p class="brand-subtitle">Únete a nuestra comunidad</p>
+    </div>
+
+    <!-- Formulario de registro -->
+    <div class="form-section">
+      <div class="form-card">
+        <h2 class="form-title">Crear Cuenta</h2>
         
-      </ion-button>
-    </div>
+        <form (submit)="register()" class="register-form">
+          <div class="input-group">
+            <div class="input-wrapper">
+              <ion-icon name="person-outline" class="input-icon"></ion-icon>
+              <ion-input 
+                [(ngModel)]="firstName" 
+                name="firstName" 
+                placeholder="Nombre"
+                required
+                class="modern-input">
+              </ion-input>
+            </div>
+          </div>
 
-    <!-- Header -->
-    <div class="header">
-      <h1 class="title">VAMO ARRIBA</h1>
-    </div>
+          <div class="input-group">
+            <div class="input-wrapper">
+              <ion-icon name="person-outline" class="input-icon"></ion-icon>
+              <ion-input 
+                [(ngModel)]="lastName" 
+                name="lastName" 
+                placeholder="Apellido"
+                required
+                class="modern-input">
+              </ion-input>
+            </div>
+          </div>
 
-    <!-- Formulario -->
-    <div class="form-container">
-      <form (submit)="register()" class="form">
-        <div class="form-group">
-          <ion-item class="custom-input">
-            <ion-label position="floating">Nombre</ion-label>
-            <ion-input 
-              [(ngModel)]="firstName" 
-              name="firstName" 
-              required
-              class="input-field">
-            </ion-input>
-          </ion-item>
-        </div>
+          <div class="input-group">
+            <div class="input-wrapper">
+              <ion-icon name="mail-outline" class="input-icon"></ion-icon>
+              <ion-input 
+                [(ngModel)]="email" 
+                name="email" 
+                type="email" 
+                placeholder="Correo electrónico"
+                required
+                class="modern-input">
+              </ion-input>
+            </div>
+          </div>
 
-        <div class="form-group">
-          <ion-item class="custom-input">
-            <ion-label position="floating">Apellido</ion-label>
-            <ion-input 
-              [(ngModel)]="lastName" 
-              name="lastName" 
-              required
-              class="input-field">
-            </ion-input>
-          </ion-item>
-        </div>
+          <div class="input-group">
+            <div class="input-wrapper">
+              <ion-icon name="mail-outline" class="input-icon"></ion-icon>
+              <ion-input 
+                [(ngModel)]="confirmEmail" 
+                name="confirmEmail" 
+                type="email" 
+                placeholder="Confirmar correo"
+                required
+                class="modern-input">
+              </ion-input>
+            </div>
+          </div>
 
-        <div class="form-group">
-          <ion-item class="custom-input">
-            <ion-label position="floating">Correo electrónico</ion-label>
-            <ion-input 
-              [(ngModel)]="email" 
-              name="email" 
-              type="email" 
-              required
-              class="input-field">
-            </ion-input>
-          </ion-item>
-        </div>
+          <div class="input-group">
+            <div class="input-wrapper">
+              <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+              <ion-input 
+                [(ngModel)]="password" 
+                name="password" 
+                type="password" 
+                placeholder="Contraseña"
+                required
+                class="modern-input">
+              </ion-input>
+            </div>
+          </div>
 
-        <div class="form-group">
-          <ion-item class="custom-input">
-            <ion-label position="floating">Confirmar correo</ion-label>
-            <ion-input 
-              [(ngModel)]="confirmEmail" 
-              name="confirmEmail" 
-              type="email" 
-              required
-              class="input-field">
-            </ion-input>
-          </ion-item>
-        </div>
+          <div class="input-group">
+            <div class="input-wrapper">
+              <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+              <ion-input 
+                [(ngModel)]="confirmPassword" 
+                name="confirmPassword" 
+                type="password" 
+                placeholder="Confirmar contraseña"
+                required
+                class="modern-input">
+              </ion-input>
+            </div>
+          </div>
 
-        <div class="form-group">
-          <ion-item class="custom-input">
-            <ion-label position="floating">Contraseña</ion-label>
-            <ion-input 
-              [(ngModel)]="password" 
-              name="password" 
-              type="password" 
-              required
-              class="input-field">
-            </ion-input>
-          </ion-item>
-        </div>
-
-        <div class="button-group">
           <ion-button 
             expand="block" 
             type="submit" 
             [disabled]="loading"
-            class="primary-button">
+            class="register-button">
             <ion-icon name="person-add-outline" slot="start"></ion-icon>
-            Registrarse
+            {{ loading ? 'Creando cuenta...' : 'Crear Cuenta' }}
           </ion-button>
+        </form>
+
+        <!-- Separador -->
+        <div class="divider">
+          <span>o</span>
         </div>
 
-        <div class="message-container" [ngClass]="messageClass" *ngIf="message">
-          <ion-text [ngClass]="messageClass">
-            <p>{{ message }}</p>
-          </ion-text>
+        <!-- Botón de login -->
+        <ion-button 
+          expand="block" 
+          fill="outline"
+          (click)="goToAuth()"
+          class="login-button">
+          <ion-icon name="log-in-outline" slot="start"></ion-icon>
+          Ya tengo cuenta
+        </ion-button>
+
+        <!-- Mensaje de error -->
+        <div class="error-container" *ngIf="message">
+          <ion-icon name="alert-circle-outline" class="error-icon"></ion-icon>
+          <p class="error-message">{{ message }}</p>
         </div>
-      </form>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p class="footer-text">© {{ currentYear }} Coritos. By Rafael H.</p>
     </div>
   </div>
 </ion-content>

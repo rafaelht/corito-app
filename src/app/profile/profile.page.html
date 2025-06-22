@@ -1,8 +1,9 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home" text="" color="black"></ion-back-button>
+      <ion-back-button defaultHref="/home" text=""></ion-back-button>
     </ion-buttons>
+    <ion-title>Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -61,7 +62,7 @@
           </ion-button>
         </form>
 
-        <div class="ion-padding">
+        <div style="padding-top: 8px;">
           <ion-button expand="block" fill="outline" color="danger" (click)="signOut()" class="sign-out-button">
             Cerrar Sesión
           </ion-button>

@@ -4,21 +4,28 @@ ion-content {
   background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
 }
 
+ion-header {
+  &::after {
+    display: none;
+  }
+}
+
 ion-toolbar {
   --background: transparent;
   --color: #fff;
-  --padding-top: 24px;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  --min-height: 60px;
 }
 
 .back-wrapper {
-  align-self: flex-start;
-  margin-bottom: 1rem;
   width: 100%;
   display: flex;
-  justify-content: flex-start;
+  margin-bottom: 1rem;
 }
 
 .back-button {
+  --padding-start: 0;
   --color: rgba(255, 255, 255, 0.8);
   --background: transparent;
   font-weight: 500;
@@ -26,9 +33,313 @@ ion-toolbar {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  --min-height: 44px;
+  --min-width: 44px;
 
   &:hover {
     --color: white;
-    transform: translateX(-2px);
+  }
+  
+  // Estilos específicos para Android
+  &.md {
+    --color: rgba(255, 255, 255, 0.8) !important;
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --padding-top: 12px;
+    --padding-bottom: 12px;
+    --min-height: 44px;
+    --min-width: 44px;
+  }
+  
+  // Estilos específicos para iOS
+  &.ios {
+    --color: rgba(255, 255, 255, 0.8) !important;
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --padding-top: 12px;
+    --padding-bottom: 12px;
+    --min-height: 44px;
+    --min-width: 44px;
+  }
+}
+
+/* Diseño moderno para la página de registro */
+
+.auth-content {
+  --background: transparent;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fondo animado */
+.background-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  z-index: -2;
+}
+
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, 
+    rgba(15, 12, 41, 0.9) 0%, 
+    rgba(48, 43, 99, 0.9) 50%, 
+    rgba(36, 36, 62, 0.9) 100%);
+  animation: gradientShift 8s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+/* Contenedor principal */
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Sección de marca */
+.brand-section {
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: -40px;
+}
+
+.logo-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: #2c2c2e;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  border: 1px solid #444;
+}
+
+.logo-icon {
+  font-size: 2.5rem;
+  color: white;
+}
+
+.brand-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 8px 0;
+  letter-spacing: 1px;
+}
+
+.brand-subtitle {
+  font-size: 1rem;
+  color: #ccc;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Sección del formulario */
+.form-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -90px;
+}
+
+.form-card {
+  background: #2c2c2e;
+  border-radius: 20px;
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid #444;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.form-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  margin: 0 0 30px 0;
+}
+
+/* Grupos de input */
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #3a3a3c;
+  border-radius: 12px;
+  border: 1px solid #555;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.input-wrapper:focus-within {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+.input-icon {
+  color: #999;
+  font-size: 1.2rem;
+  margin-left: 15px;
+  margin-right: 10px;
+}
+
+.modern-input {
+  --background: transparent;
+  --color: white;
+  --placeholder-color: #888;
+  --padding-start: 0;
+  --padding-end: 15px;
+  --padding-top: 15px;
+  --padding-bottom: 15px;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.modern-input::part(native) {
+  background: transparent;
+}
+
+/* Botones */
+.register-button {
+  --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --color: white;
+  --border-radius: 12px;
+  --padding-top: 15px;
+  --padding-bottom: 15px;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.register-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.login-button {
+  --border-color: #555;
+  --color: white;
+  --border-radius: 12px;
+  --padding-top: 15px;
+  --padding-bottom: 15px;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.login-button:hover {
+  --background: #3a3a3c;
+  transform: translateY(-1px);
+}
+
+/* Separador */
+.divider {
+  text-align: center;
+  margin: 25px 0;
+  position: relative;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #555;
+}
+
+.divider span {
+  background: #3a3a3c;
+  padding: 0 15px;
+  color: #999;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Mensaje de error */
+.error-container {
+  display: flex;
+  align-items: center;
+  background: #2c1f1f;
+  border: 1px solid #eb445a;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 20px;
+}
+
+.error-icon {
+  color: #eb445a;
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
+
+.error-message {
+  color: #eb445a;
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  padding-bottom: 20px;
+}
+
+.footer-text {
+  color: white;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .auth-container {
+    padding: 15px;
+  }
+  
+  .form-card {
+    padding: 30px 20px;
+  }
+  
+  .brand-title {
+    font-size: 2rem;
+  }
+  
+  .logo-container {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .logo-icon {
+    font-size: 2rem;
   }
 } 

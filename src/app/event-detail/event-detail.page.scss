@@ -1,21 +1,23 @@
+/* Estilos específicos para la página de detalle de evento */
+
+ion-header {
+  --background: transparent;
+  background: transparent;
+  
+  ion-toolbar {
+    --background: transparent;
+    background: transparent;
+  }
+  
+  ion-title {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+}
+
 ion-content {
-  --background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-}
-
-ion-toolbar {
-  --background: transparent;
-  --padding-top: 24px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  -webkit-backdrop-filter: blur(8px);
-}
-
-ion-back-button {
-  --background: transparent;
-  --color: white;
+  margin-top: 0;
 }
 
 .header-container {
@@ -29,6 +31,7 @@ ion-back-button {
   padding: 20px;
   color: #fff;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+  margin-top: -70px;
 }
 
 .header-overlay {
@@ -108,30 +111,43 @@ ion-back-button {
   padding: 0 16px;
 }
 
-ion-list {
+ion-list ion-item ion-icon[name="checkmark-circle-outline"] {
+  color: #667eea;
+}
+
+ion-list ion-item {
   --background: transparent;
-  background: transparent;
-  padding: 0;
+  --color: #f5f5f5;
+  border-bottom: 1px solid #999;
+}
 
-  ion-item {
+ion-list {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.action-buttons {
+  ion-button {
     --background: transparent;
-    color: #f5f5f5;
+    --border-color: #667eea;
+    --border-width: 1px;
+    --border-style: solid;
+    --color: #667eea;
+    --border-radius: 8px;
+    font-weight: 500;
+    text-transform: none;
+    
+    &:hover {
+      --background: rgba(102, 126, 234, 0.1);
+    }
   }
-}
-
-ion-spinner {
-  --color: #667eea;
-}
-
-// Estilos para el FAB
-ion-fab-button {
-  --background: #667eea;
-}
-
-ion-fab-button[color="danger"] {
-  --background: #eb445a;
-}
-
-ion-fab-button[color="tertiary"] {
-  --background: #6f42c1;
+  
+  ion-button[color="danger"] {
+    --border-color: #eb445a;
+    --color: #eb445a;
+    
+    &:hover {
+      --background: rgba(235, 68, 90, 0.1);
+    }
+  }
 }

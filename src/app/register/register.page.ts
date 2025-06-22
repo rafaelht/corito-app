@@ -18,9 +18,11 @@ export class RegisterPage implements OnInit {
   email: string = '';
   confirmEmail: string = '';
   password: string = '';
+  confirmPassword: string = '';
   loading: boolean = false;
   message: string = '';
   messageClass: string = '';
+  currentYear: number = new Date().getFullYear();
 
   constructor(
     private supabase: SupabaseService,
@@ -38,6 +40,7 @@ export class RegisterPage implements OnInit {
     this.email = '';
     this.confirmEmail = '';
     this.password = '';
+    this.confirmPassword = '';
     this.loading = false;
   }
 
@@ -46,6 +49,12 @@ export class RegisterPage implements OnInit {
 
     if (this.email !== this.confirmEmail) {
       this.message = 'Los correos no coinciden.';
+      this.messageClass = 'error-message';
+      return;
+    }
+
+    if (this.password !== this.confirmPassword) {
+      this.message = 'Las contraseñas no coinciden.';
       this.messageClass = 'error-message';
       return;
     }
@@ -92,6 +101,10 @@ export class RegisterPage implements OnInit {
   }
 
   goBack() {
+    this.router.navigate(['/auth'], { replaceUrl: true });
+  }
+
+  goToAuth() {
     this.router.navigate(['/auth'], { replaceUrl: true });
   }
 }

@@ -1,10 +1,13 @@
-<ion-content [fullscreen]="true">
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home" text=""></ion-back-button>
     </ion-buttons>
+    <ion-title>Crear Corito</ion-title>
   </ion-toolbar>
+</ion-header>
 
+<ion-content [fullscreen]="true">
   <form [formGroup]="eventForm" (ngSubmit)="createEvent()">
     <ion-grid>
       <ion-row class="ion-justify-content-center">

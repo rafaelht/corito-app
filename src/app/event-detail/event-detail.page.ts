@@ -5,6 +5,7 @@ import { IonicModule, AlertController, ToastController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventService } from '../services/event.service';
 import { Event as AppEvent } from '../models/event.interface';
+import { SupabaseService } from '../supabase.service';
 
 @Component({
   selector: 'app-event-detail',
@@ -16,13 +17,15 @@ import { Event as AppEvent } from '../models/event.interface';
 export class EventDetailPage implements OnInit {
   event: AppEvent | null = null;
   isLoading = true;
+  isOwner = false;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private eventService: EventService,
     private alertController: AlertController,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private supabase: SupabaseService
   ) { }
 
   ngOnInit() {
@@ -39,12 +42,22 @@ export class EventDetailPage implements OnInit {
 
     try {
       this.event = await this.eventService.getEventById(eventId);
+      this.checkOwnership();
     } catch (error) {
       console.error('Error loading event details:', error);
       await this.showToast('Error al cargar el evento', 'danger');
     } finally {
       this.isLoading = false;
     }
+  }
+
+  async checkOwnership() {
+    if (!this.event) {
+      this.isOwner = false;
+      return;
+    }
+    const { data: { user } } = await this.supabase.client.auth.getUser();
+    this.isOwner = user?.id === this.event.created_by;
   }
 
   editEvent() {

@@ -1,17 +1,22 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-      <ion-buttons slot="end">
-        <ion-button class="profile-button" (click)="openPopover($event)">
-          <ion-icon slot="icon-only" name="person-circle-outline"></ion-icon>
-        </ion-button>
-      </ion-buttons>
+    <ion-title class="home-title">Mis Coritos</ion-title>
+    <ion-buttons slot="end">
+      <ion-button class="profile-button" (click)="openPopover($event)">
+        <ion-icon slot="icon-only" name="person-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="home-content">
+  <!-- Subtítulo -->
+  <div class="subtitle-container">
+    <h2 class="subtitle">Coritos recientes</h2>
+  </div>
+
   <!-- Lista de Eventos -->
   <div class="events-container">
-    <h2 class="events-title">Mis Coritos</h2>
     <div *ngIf="isLoading" class="ion-text-center ion-padding">
       <ion-spinner name="crescent"></ion-spinner>
     </div>

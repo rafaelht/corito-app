@@ -1,63 +1,91 @@
-<ion-content class="ion-padding auth-common">
-  <div class="container">
-    <div class="header">
-      <h1 class="title">CORITOS</h1>
+<ion-content class="auth-content">
+  <!-- Fondo con gradiente animado -->
+  <div class="background-animation">
+    <div class="gradient-overlay"></div>
+  </div>
+
+  <div class="auth-container">
+    <!-- Logo y título -->
+    <div class="brand-section">
+      <div class="logo-container">
+        <ion-icon name="calendar-outline" class="logo-icon"></ion-icon>
+      </div>
+      <h1 class="brand-title">Coritos</h1>
+      <p class="brand-subtitle">Organiza tus eventos de manera simple</p>
     </div>
 
-    <div class="form-container">
-      <form (submit)="login()" class="form">
-        <div class="form-group">
-          <ion-item class="custom-input">
-            <ion-label position="floating">Correo electrónico</ion-label>
-            <ion-input 
-              [(ngModel)]="email" 
-              name="email" 
-              type="email" 
-              required
-              class="input-field">
-            </ion-input>
-          </ion-item>
-        </div>
+    <!-- Formulario de login -->
+    <div class="form-section">
+      <div class="form-card">
+        <h2 class="form-title">Iniciar Sesión</h2>
+        
+        <form (submit)="login()" class="login-form">
+          <div class="input-group">
+            <div class="input-wrapper">
+              <ion-icon name="mail-outline" class="input-icon"></ion-icon>
+              <ion-input 
+                #emailInput
+                [(ngModel)]="email" 
+                name="email" 
+                type="email" 
+                placeholder="Correo electrónico"
+                required
+                class="modern-input">
+              </ion-input>
+            </div>
+          </div>
 
-        <div class="form-group">
-          <ion-item class="custom-input">
-            <ion-label position="floating">Contraseña</ion-label>
-            <ion-input 
-              [(ngModel)]="password" 
-              name="password" 
-              type="password" 
-              required
-              class="input-field">
-            </ion-input>
-          </ion-item>
-        </div>
+          <div class="input-group">
+            <div class="input-wrapper">
+              <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+              <ion-input 
+                #passwordInput
+                [(ngModel)]="password" 
+                name="password" 
+                type="password" 
+                placeholder="Contraseña"
+                required
+                class="modern-input">
+              </ion-input>
+            </div>
+          </div>
 
-        <div class="button-group">
           <ion-button 
             expand="block" 
             type="submit" 
             [disabled]="loading"
-            class="primary-button">
+            class="login-button">
             <ion-icon name="log-in-outline" slot="start"></ion-icon>
-            Iniciar sesión
+            {{ loading ? 'Iniciando...' : 'Iniciar Sesión' }}
           </ion-button>
+        </form>
 
-          <ion-button 
-            expand="block" 
-            fill="outline"
-            (click)="goToRegister()"
-            class="secondary-button">
-            <ion-icon name="person-add-outline" slot="start"></ion-icon>
-            Registrarse
-          </ion-button>
+        <!-- Separador -->
+        <div class="divider">
+          <span>o</span>
         </div>
 
-        <div class="message-container error-message" *ngIf="message">
-          <ion-text color="danger">
-            <p>{{ message }}</p>
-          </ion-text>
+        <!-- Botón de registro -->
+        <ion-button 
+          expand="block" 
+          fill="outline"
+          (click)="goToRegister()"
+          class="register-button">
+          <ion-icon name="person-add-outline" slot="start"></ion-icon>
+          Crear cuenta nueva
+        </ion-button>
+
+        <!-- Mensaje de error -->
+        <div class="error-container" *ngIf="message">
+          <ion-icon name="alert-circle-outline" class="error-icon"></ion-icon>
+          <p class="error-message">{{ message }}</p>
         </div>
-      </form>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p class="footer-text">© {{ currentYear }} Coritos. By Rafael H.</p>
     </div>
   </div>
 </ion-content>
