@@ -1,16 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SupabaseService } from '../supabase.service';
-import { IonicModule, AlertController } from '@ionic/angular';
-import { CommonModule } from '@angular/common';
+import { 
+  AlertController, 
+  NavController, 
+  IonicModule
+} from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule
+  ]
 })
 export class RegisterPage implements OnInit {
   firstName: string = '';
@@ -21,13 +29,13 @@ export class RegisterPage implements OnInit {
   confirmPassword: string = '';
   loading: boolean = false;
   message: string = '';
-  messageClass: string = '';
   currentYear: number = new Date().getFullYear();
 
   constructor(
     private supabase: SupabaseService,
     private alertController: AlertController,
-    private router: Router
+    private router: Router,
+    private navCtrl: NavController
   ) {}
 
   ngOnInit() {
@@ -49,44 +57,46 @@ export class RegisterPage implements OnInit {
 
     if (this.email !== this.confirmEmail) {
       this.message = 'Los correos no coinciden.';
-      this.messageClass = 'error-message';
       return;
     }
 
     if (this.password !== this.confirmPassword) {
       this.message = 'Las contraseñas no coinciden.';
-      this.messageClass = 'error-message';
       return;
     }
 
     this.loading = true;
 
-    const { data, error } = await this.supabase.client.auth.signUp({
-      email: this.email,
-      password: this.password,
-      options: {
-        data: {
-          first_name: this.firstName,
-          last_name: this.lastName,
+    try {
+      const { data, error } = await this.supabase.client.auth.signUp({
+        email: this.email,
+        password: this.password,
+        options: {
+          data: {
+            first_name: this.firstName,
+            last_name: this.lastName,
+          },
         },
-      },
-    });
-
-    this.loading = false;
-
-    if (error) {
-      this.message = `Error al registrar: ${error.message}`;
-      this.messageClass = 'error-message';
-    } else {
-      this.resetForm();
+      });
+  
+      if (error) {
+        throw error;
+      }
+      
+      this.loading = false;
       await this.showSuccessAlert();
+      // El 'data' contendrá la sesión del usuario si el correo requiere confirmación.
+      // O la sesión del usuario si el auto-confirm está habilitado.
+    } catch (error: any) {
+      this.loading = false;
+      this.message = `Error al registrar: ${error.message}`;
     }
   }
 
   async showSuccessAlert() {
     const alert = await this.alertController.create({
       header: 'Registro exitoso 🥳✅',
-      message: 'Usuario creado correctamente.',
+      message: 'Usuario creado correctamente. Por favor, revisa tu correo para verificar tu cuenta.',
       buttons: [
         {
           text: 'Aceptar',
@@ -101,10 +111,10 @@ export class RegisterPage implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/auth'], { replaceUrl: true });
+    this.navCtrl.back();
   }
 
-  goToAuth() {
+  goToLogin() {
     this.router.navigate(['/auth'], { replaceUrl: true });
   }
 }

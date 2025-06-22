@@ -1,3 +1,12 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/auth" text="" (click)="goBack()"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Crear Cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content class="auth-content">
   <!-- Fondo con gradiente animado -->
   <div class="background-animation">
@@ -11,7 +20,7 @@
         <ion-icon name="calendar-outline" class="logo-icon"></ion-icon>
       </div>
       <h1 class="brand-title">Coritos</h1>
-      <p class="brand-subtitle">Únete a nuestra comunidad</p>
+      <p class="brand-subtitle">Crea tu cuenta para empezar a organizar</p>
     </div>
 
     <!-- Formulario de registro -->
@@ -23,7 +32,7 @@
           <div class="input-group">
             <div class="input-wrapper">
               <ion-icon name="person-outline" class="input-icon"></ion-icon>
-              <ion-input 
+              <ion-input
                 [(ngModel)]="firstName" 
                 name="firstName" 
                 placeholder="Nombre"
@@ -36,7 +45,7 @@
           <div class="input-group">
             <div class="input-wrapper">
               <ion-icon name="person-outline" class="input-icon"></ion-icon>
-              <ion-input 
+              <ion-input
                 [(ngModel)]="lastName" 
                 name="lastName" 
                 placeholder="Apellido"
@@ -49,10 +58,10 @@
           <div class="input-group">
             <div class="input-wrapper">
               <ion-icon name="mail-outline" class="input-icon"></ion-icon>
-              <ion-input 
+              <ion-input
                 [(ngModel)]="email" 
                 name="email" 
-                type="email" 
+                type="email"
                 placeholder="Correo electrónico"
                 required
                 class="modern-input">
@@ -77,10 +86,10 @@
           <div class="input-group">
             <div class="input-wrapper">
               <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
-              <ion-input 
+              <ion-input
                 [(ngModel)]="password" 
                 name="password" 
-                type="password" 
+                type="password"
                 placeholder="Contraseña"
                 required
                 class="modern-input">
@@ -91,10 +100,10 @@
           <div class="input-group">
             <div class="input-wrapper">
               <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
-              <ion-input 
+              <ion-input
                 [(ngModel)]="confirmPassword" 
                 name="confirmPassword" 
-                type="password" 
+                type="password"
                 placeholder="Confirmar contraseña"
                 required
                 class="modern-input">
@@ -108,7 +117,7 @@
             [disabled]="loading"
             class="register-button">
             <ion-icon name="person-add-outline" slot="start"></ion-icon>
-            {{ loading ? 'Creando cuenta...' : 'Crear Cuenta' }}
+            {{ loading ? 'Creando...' : 'Crear Cuenta' }}
           </ion-button>
         </form>
 
@@ -116,16 +125,6 @@
         <div class="divider">
           <span>o</span>
         </div>
-
-        <!-- Botón de login -->
-        <ion-button 
-          expand="block" 
-          fill="outline"
-          (click)="goToAuth()"
-          class="login-button">
-          <ion-icon name="log-in-outline" slot="start"></ion-icon>
-          Ya tengo cuenta
-        </ion-button>
 
         <!-- Mensaje de error -->
         <div class="error-container" *ngIf="message">

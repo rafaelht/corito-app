@@ -20,35 +20,31 @@
         <h2 class="form-title">Iniciar Sesión</h2>
         
         <form (submit)="login()" class="login-form">
-          <div class="input-group">
-            <div class="input-wrapper">
-              <ion-icon name="mail-outline" class="input-icon"></ion-icon>
-              <ion-input 
-                #emailInput
-                [(ngModel)]="email" 
-                name="email" 
-                type="email" 
-                placeholder="Correo electrónico"
-                required
-                class="modern-input">
-              </ion-input>
-            </div>
-          </div>
+          <ion-item class="modern-item">
+            <ion-icon name="mail-outline" slot="start"></ion-icon>
+            <ion-input 
+              #emailInput
+              [(ngModel)]="email" 
+              name="email" 
+              type="email" 
+              placeholder="Correo electrónico"
+              required
+              class="modern-input">
+            </ion-input>
+          </ion-item>
 
-          <div class="input-group">
-            <div class="input-wrapper">
-              <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
-              <ion-input 
-                #passwordInput
-                [(ngModel)]="password" 
-                name="password" 
-                type="password" 
-                placeholder="Contraseña"
-                required
-                class="modern-input">
-              </ion-input>
-            </div>
-          </div>
+          <ion-item class="modern-item">
+            <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+            <ion-input 
+              #passwordInput
+              [(ngModel)]="password" 
+              name="password" 
+              type="password" 
+              placeholder="Contraseña"
+              required
+              class="modern-input">
+            </ion-input>
+          </ion-item>
 
           <ion-button 
             expand="block" 
@@ -69,10 +65,11 @@
         <ion-button 
           expand="block" 
           fill="outline"
+          color="secondary"
           (click)="goToRegister()"
           class="register-button">
           <ion-icon name="person-add-outline" slot="start"></ion-icon>
-          Crear cuenta nueva
+          Crear Cuenta
         </ion-button>
 
         <!-- Mensaje de error -->
