@@ -36,17 +36,34 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.always.css";
 
+// Nueva paleta de colores: Azul celeste con blanco
+:root {
+  --primary-color: #87CEEB; // Azul celeste
+  --primary-light: #B0E0E6; // Azul celeste claro
+  --primary-dark: #5F9EA0; // Azul celeste oscuro
+  --accent-color: #E0F6FF; // Azul muy claro con blanco
+  --background-primary: #F0F8FF; // Azul muy claro (Alice Blue)
+  --background-secondary: #E6F3FF; // Azul claro con blanco
+  --background-card: #FFFFFF; // Blanco puro
+  --text-primary: #2F4F4F; // Gris oscuro para texto
+  --text-secondary: #5F9EA0; // Azul celeste oscuro para texto secundario
+  --border-color: #B0E0E6; // Azul celeste claro para bordes
+  --shadow-color: rgba(135, 206, 235, 0.2); // Sombra azul celeste
+}
+
 // Common styles for auth and register pages
 .auth-common {
   ion-content {
     --background: linear-gradient(135deg, #0f0c29, #66628a, #8f8fb9);
     background: linear-gradient(135deg, #574cb4, #6f69b4, #9292c0);
     color: rgb(255, 255, 255);
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: auto;
+    padding: 20px;
+    box-sizing: border-box;
   }
 
   .container {
@@ -503,117 +520,466 @@ ion-header {
 
 ion-toolbar {
   --background: transparent;
-  --color: #fff;
-  --padding-top: 0;
-  --padding-bottom: 0;
-  --min-height: 80px;
-}
-
-ion-back-button {
-  --color: #fff !important;
   --padding-start: 16px;
   --padding-end: 16px;
   --padding-top: 12px;
   --padding-bottom: 12px;
   --min-height: 44px;
   --min-width: 44px;
-  
-  // Estilos específicos para Android
-  &.md {
-    --color: #fff !important;
-    --padding-start: 16px;
-    --padding-end: 16px;
-    --padding-top: 12px;
-    --padding-bottom: 12px;
-    --min-height: 44px;
-    --min-width: 44px;
-  }
-  
-  // Estilos específicos para iOS
-  &.ios {
-    --color: #fff !important;
-    --padding-start: 16px;
-    --padding-end: 16px;
-    --padding-top: 12px;
-    --padding-bottom: 12px;
-    --min-height: 44px;
-    --min-width: 44px;
-  }
 }
 
-// Estilos para headers sin borde
-ion-header.ion-no-border {
-  &::after {
-    display: none;
-  }
-}
-
-// Estilos para botones de back en diferentes contextos
-ion-back-button[color="black"] {
-  --color: #000 !important;
-}
-
-ion-back-button[color="white"] {
-  --color: #fff !important;
-}
-
-// Estilos adicionales para mejorar accesibilidad en móviles
-ion-back-button {
-  // Asegurar área de toque mínima de 44px (recomendación de Apple/Google)
-  &::part(native) {
-    min-height: 44px;
-    min-width: 44px;
-    padding: 12px 16px;
-  }
-  
-  // Estilos para el icono dentro del botón
-  ion-icon {
-    font-size: 24px;
-    margin-right: 8px;
-  }
-}
-
-// Estilos para botones de back personalizados (como en register)
-ion-button.back-button {
-  --padding-start: 16px;
-  --padding-end: 16px;
-  --padding-top: 12px;
-  --padding-bottom: 12px;
-  --min-height: 44px;
-  --min-width: 44px;
-  
-  &::part(native) {
-    min-height: 44px;
-    min-width: 44px;
-    padding: 12px 16px;
-  }
-  
-  ion-icon {
-    font-size: 24px;
-    margin-right: 8px;
-  }
-}
-
-// Estilos para headers fijos
-ion-header:not(.auth-header) {
+// Estilos para el fondo animado
+.background-animation {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  z-index: 1000;
-  
-  ion-toolbar {
-    --background: rgba(15, 12, 41, 0.75);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  animation: gradientShift 8s ease-in-out infinite;
+}
+
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  opacity: 0.8;
+}
+
+@keyframes gradientShift {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.brand-section {
+  text-align: center;
+  margin-bottom: 80px;
+  margin-top: -40px;
+}
+
+.logo-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: #2c2c2e;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  border: 1px solid #444;
+}
+
+.logo-icon {
+  font-size: 2.5rem;
+  color: white;
+}
+
+.brand-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 8px 0;
+  letter-spacing: 1px;
+}
+
+.brand-subtitle {
+  font-size: 1rem;
+  color: #ccc;
+  margin: 0;
+  font-weight: 400;
+}
+
+.form-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: -120px;
+  min-height: 0;
+}
+
+.form-card {
+  background: #2c2c2e;
+  border-radius: 20px;
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid #444;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.form-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  margin: 0 0 30px 0;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #3a3a3c;
+  border-radius: 12px;
+  border: 1px solid #555;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.input-wrapper:focus-within {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+.input-icon {
+  color: #999;
+  font-size: 1.2rem;
+  margin-left: 15px;
+  margin-right: 0;
+}
+
+.modern-input {
+  --background: transparent !important;
+  --color: white !important;
+  --placeholder-color: #888 !important;
+  --padding-start: 0 !important;
+  --padding-end: 0 !important;
+  --padding-top: 0 !important;
+  --padding-bottom: 0 !important;
+  font-size: 1rem;
+  font-weight: 400;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding-left: 0 !important;
+}
+
+.modern-input::part(native) {
+  background: transparent !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 18px 0 18px 0 !important;
+}
+
+.modern-input::part(placeholder) {
+  color: #888 !important;
+}
+
+// Forzar colores en inputs para todas las plataformas
+ion-input.modern-input {
+  --color: white !important;
+  color: white !important;
+  &::part(native) {
+    color: white !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 18px 0 18px 0 !important;
+  }
+  &::part(placeholder) {
+    color: #888 !important;
   }
 }
 
-// Estilos para páginas con header fijo (no .auth-common)
-// Esto asegura que el contenido no se solape con el header fijo y añade espacio
-ion-content:not(.auth-common) {
-  // 80px (altura header) + 16px (espacio extra) + safe area
-  --padding-top: calc(80px + var(--ion-safe-area-top, 0px) + 16px);
+// Estilos específicos para Android
+.md ion-input.modern-input {
+  --color: white !important;
+  color: white !important;
+  &::part(native) {
+    color: white !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 18px 0 18px 0 !important;
+  }
+}
+
+// Estilos específicos para iOS
+.ios ion-input.modern-input {
+  --color: white !important;
+  color: white !important;
+  &::part(native) {
+    color: white !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 18px 0 18px 0 !important;
+  }
+}
+
+.login-button, .register-button {
+  --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --color: white;
+  --border-radius: 12px;
+  --padding-top: 15px;
+  --padding-bottom: 15px;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.login-button::part(native), .register-button::part(native) {
+  border-radius: 12px !important;
+  overflow: hidden;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+// Color específico para el botón de registro
+.register-button {
+  --background: transparent;
+  --border-color: #4facfe;
+  --border-width: 2px;
+  --border-style: solid;
+  --color: #4facfe;
+  box-shadow: none;
+}
+
+.register-button::part(native) {
+  background: transparent;
+  border: 2px solid #4facfe;
+  color: #4facfe;
+}
+
+.register-button:hover {
+  --background: rgba(79, 172, 254, 0.1);
+  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.2);
+}
+
+.register-button:hover::part(native) {
+  background: rgba(79, 172, 254, 0.1);
+}
+
+.login-button:hover, .register-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.login-button[fill="outline"] {
+  --background: transparent;
+  --border-color: #555;
+  --color: white;
+  box-shadow: none;
+}
+
+.login-button[fill="outline"]:hover {
+  --background: #3a3a3c;
+  transform: translateY(-1px);
+}
+
+.divider {
+  text-align: center;
+  margin: 25px 0;
+  position: relative;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #555;
+}
+
+.divider span {
+  background: #3a3a3c;
+  padding: 0 15px;
+  color: #999;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.error-container {
+  display: flex;
+  align-items: center;
+  background: #2c1f1f;
+  border: 1px solid #eb445a;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 20px;
+}
+
+.error-icon {
+  color: #eb445a;
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
+
+.error-message {
+  color: #eb445a;
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  padding-bottom: 20px;
+}
+
+.footer-text {
+  color: white;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+/* Estilos para los items modernos en auth y register */
+.modern-item {
+  --background: #3a3a3c;
+  --border-color: #555;
+  --border-radius: 12px;
+  --border-width: 1px;
+  --padding-start: 10px;
+  --inner-padding-end: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  --min-height: 55px;
+}
+
+.modern-item ion-icon {
+  color: #999;
+  font-size: 1.2rem;
+  margin-right: 0;
+}
+
+.modern-item.ion-focused {
+  --border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+.modern-item ion-input {
+  --color: white;
+  --placeholder-color: #888;
+  font-weight: 400;
+  --padding-start: 0;
+}
+
+// Footer fijo para dispositivos móviles
+.fixed-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 15px 20px;
+  padding-bottom: calc(15px + env(safe-area-inset-bottom));
+  z-index: 1000;
+}
+
+.fixed-footer .footer-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.75rem;
+  margin: 0;
+  font-weight: 400;
+}
+
+// Estilos responsivos para dispositivos móviles
+@media (max-width: 480px) {
+  .auth-container {
+    padding: 8px;
+    height: 100vh;
+  }
+  
+  .brand-section {
+    margin-bottom: 20px;
+    margin-top: -20px;
+  }
+  
+  .form-card {
+    padding: 20px 15px;
+  }
+  
+  .form-title {
+    font-size: 1.3rem;
+    margin: 0 0 15px 0;
+  }
+  
+  .input-group {
+    margin-bottom: 12px;
+  }
+  
+  .brand-title {
+    font-size: 2rem;
+  }
+  
+  .logo-container {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .logo-icon {
+    font-size: 2rem;
+  }
+  
+  .footer {
+    margin-top: 15px;
+    padding-bottom: 5px;
+  }
+}
+
+@media (max-height: 700px) {
+  .auth-container {
+    padding: 5px;
+  }
+  
+  .brand-section {
+    margin-bottom: 15px;
+    margin-top: -10px;
+  }
+  
+  .form-card {
+    padding: 15px 12px;
+  }
+  
+  .form-title {
+    font-size: 1.2rem;
+    margin: 0 0 10px 0;
+  }
+  
+  .input-group {
+    margin-bottom: 8px;
+  }
+  
+  .divider {
+    margin: 15px 0;
+  }
+  
+  .footer {
+    margin-top: 10px;
+    padding-bottom: 5px;
+  }
 }
 
 // Estilos comunes para todas las páginas
@@ -772,510 +1138,24 @@ ion-input:focus-within::part(native), ion-textarea:focus-within::part(native) {
   color: #e0e0e0 !important;
 }
 
-// Estilos comunes para headers transparentes
-ion-header {
-  background: transparent;
-  position: absolute;
-  width: 100%;
-  &::after {
-    display: none;
-  }
-}
-
-ion-toolbar {
-  --background: transparent;
-  --padding-start: 16px;
-  --padding-end: 16px;
-  --padding-top: 24px;
-  --padding-bottom: 8px;
-  min-height: 80px;
-  display: flex;
-  align-items: center;
-}
-
-// Estilos comunes para botones de perfil
-.profile-button {
-  --background: transparent;
-  --background-hover: transparent;
-  --border-radius: 50%;
-  --width: 44px;
-  --height: 44px;
-  --color: #fff;
-  font-size: 1.8rem;
-  margin-left: auto;
-}
-
-// Estilos comunes para FAB
-.create-event-fab {
-  --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --color: white;
-  --box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4);
-  transition: all 0.3s ease;
-  --border-radius: 50%;
-  --width: 56px;
-  --height: 56px;
-  margin: 16px;
-
-  &:hover {
-    --box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-    transform: scale(1.05);
-  }
-
-  &:active {
-    transform: scale(0.95);
-  }
-}
-
-// Estilos comunes para tarjetas de eventos
-.event-card {
-  background: #2c2c2e;
-  border-radius: 12px;
-  margin-bottom: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-  color: #f5f5f5;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-
-  ion-card-header {
-    background: #3a3a3c;
-    color: #ffffff;
-  }
-  
-  ion-card-title {
-    color: #667eea;
-    font-weight: 700;
-  }
-
-  ion-card-subtitle {
-    color: #b0b0b0;
-  }
-
-  ion-card-content {
-    p {
-      display: flex;
-      align-items: center;
-      color: #d4d4d4;
-
-      ion-icon {
-        margin-right: 8px;
-        color: #667eea;
-      }
-    }
-  }
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-  }
-}
-
-// Estilos compartidos para auth y register pages
-.auth-content {
-  --background: transparent;
-  background: transparent;
-  position: relative;
-  overflow: hidden;
-}
-
-.background-animation {
+// Estilos para headers fijos
+ion-header:not(.auth-header) {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-  z-index: -2;
-}
-
-.gradient-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, 
-    rgba(15, 12, 41, 0.9) 0%, 
-    rgba(48, 43, 99, 0.9) 50%, 
-    rgba(36, 36, 62, 0.9) 100%);
-  animation: gradientShift 8s ease-in-out infinite;
-}
-
-@keyframes gradientShift {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.8; }
-}
-
-.auth-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  padding: 10px;
-  position: relative;
-  z-index: 1;
-}
-
-.brand-section {
-  text-align: center;
-  margin-bottom: 30px;
-  margin-top: -40px;
-}
-
-.logo-container {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 80px;
-  height: 80px;
-  background: #2c2c2e;
-  border-radius: 50%;
-  margin-bottom: 20px;
-  border: 1px solid #444;
-}
-
-.logo-icon {
-  font-size: 2.5rem;
-  color: white;
-}
-
-.brand-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: white;
-  margin: 0 0 8px 0;
-  letter-spacing: 1px;
-}
-
-.brand-subtitle {
-  font-size: 1rem;
-  color: #ccc;
-  margin: 0;
-  font-weight: 400;
-}
-
-.form-section {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: -90px;
-}
-
-.form-card {
-  background: #2c2c2e;
-  border-radius: 20px;
-  padding: 40px 30px;
-  width: 100%;
-  max-width: 400px;
-  border: 1px solid #444;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
-.form-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: white;
-  text-align: center;
-  margin: 0 0 30px 0;
-}
-
-.input-group {
-  margin-bottom: 20px;
-}
-
-.input-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  background: #3a3a3c;
-  border-radius: 12px;
-  border: 1px solid #555;
-  transition: all 0.3s ease;
-  overflow: hidden;
-}
-
-.input-wrapper:focus-within {
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
-}
-
-.input-icon {
-  color: #999;
-  font-size: 1.2rem;
-  margin-left: 15px;
-  margin-right: 10px;
-}
-
-.modern-input {
-  --background: transparent !important;
-  --color: white !important;
-  --placeholder-color: #888 !important;
-  --padding-start: 0 !important;
-  --padding-end: 0 !important;
-  --padding-top: 0 !important;
-  --padding-bottom: 0 !important;
-  font-size: 1rem;
-  font-weight: 400;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
-}
-
-.modern-input::part(native) {
-  background: transparent !important;
-  color: white !important;
-  border: none !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
-  padding: 15px 0 !important;
-}
-
-.modern-input::part(placeholder) {
-  color: #888 !important;
-}
-
-// Forzar colores en inputs para todas las plataformas
-ion-input.modern-input {
-  --color: white !important;
-  color: white !important;
-  &::part(native) {
-    color: white !important;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-    padding: 15px 0 !important;
-  }
-  &::part(placeholder) {
-    color: #888 !important;
-  }
-}
-
-// Estilos específicos para Android
-.md ion-input.modern-input {
-  --color: white !important;
-  color: white !important;
-  &::part(native) {
-    color: white !important;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-    padding: 15px 0 !important;
-  }
-}
-
-// Estilos específicos para iOS
-.ios ion-input.modern-input {
-  --color: white !important;
-  color: white !important;
-  &::part(native) {
-    color: white !important;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-    padding: 15px 0 !important;
-  }
-}
-
-.login-button, .register-button {
-  --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --color: white;
-  --border-radius: 12px;
-  --padding-top: 15px;
-  --padding-bottom: 15px;
-  font-weight: 600;
-  font-size: 1rem;
-  margin-top: 10px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-}
-
-.login-button:hover, .register-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-}
-
-.login-button[fill="outline"] {
-  --background: transparent;
-  --border-color: #555;
-  --color: white;
-  box-shadow: none;
-}
-
-.login-button[fill="outline"]:hover {
-  --background: #3a3a3c;
-  transform: translateY(-1px);
-}
-
-.divider {
-  text-align: center;
-  margin: 25px 0;
-  position: relative;
-}
-
-.divider::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 0;
   right: 0;
-  height: 1px;
-  background: #555;
-}
-
-.divider span {
-  background: #3a3a3c;
-  padding: 0 15px;
-  color: #999;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-.error-container {
-  display: flex;
-  align-items: center;
-  background: #2c1f1f;
-  border: 1px solid #eb445a;
-  border-radius: 8px;
-  padding: 12px;
-  margin-top: 20px;
-}
-
-.error-icon {
-  color: #eb445a;
-  font-size: 1.2rem;
-  margin-right: 10px;
-}
-
-.error-message {
-  color: #eb445a;
-  margin: 0;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-.footer {
-  text-align: center;
-  margin-top: 40px;
-  padding-bottom: 20px;
-}
-
-.footer-text {
-  color: white;
-  font-size: 0.8rem;
-  margin: 0;
-}
-
-@media (max-width: 480px) {
-  .auth-container {
-    padding: 15px;
-  }
+  z-index: 1000;
   
-  .form-card {
-    padding: 30px 20px;
-  }
-  
-  .brand-title {
-    font-size: 2rem;
-  }
-  
-  .logo-container {
-    width: 70px;
-    height: 70px;
-  }
-  
-  .logo-icon {
-    font-size: 2rem;
+  ion-toolbar {
+    --background: rgba(15, 12, 41, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 }
 
-// Estilos para botones con esquinas redondeadas
-ion-button {
-  --border-radius: 8px;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-ion-button::part(native) {
-  border-radius: 8px !important;
-  overflow: hidden;
-}
-
-// Estilos específicos para botones de submit
-ion-button[type="submit"] {
-  --border-radius: 8px;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-ion-button[type="submit"]::part(native) {
-  border-radius: 8px !important;
-  overflow: hidden;
-}
-
-// Estilos para botones outline
-ion-button[fill="outline"] {
-  --border-radius: 8px;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-ion-button[fill="outline"]::part(native) {
-  border-radius: 8px !important;
-  overflow: hidden;
-}
-
-// Estilos específicos para Android
-.md ion-button {
-  --border-radius: 8px !important;
-  border-radius: 8px !important;
-}
-
-.md ion-button::part(native) {
-  border-radius: 8px !important;
-  overflow: hidden;
-}
-
-// Estilos específicos para iOS
-.ios ion-button {
-  --border-radius: 8px !important;
-  border-radius: 8px !important;
-}
-
-.ios ion-button::part(native) {
-  border-radius: 8px !important;
-  overflow: hidden;
-}
-
-/* Estilos para los items modernos en auth y register */
-.modern-item {
-  --background: #3a3a3c;
-  --border-color: #555;
-  --border-radius: 12px;
-  --border-width: 1px;
-  --padding-start: 10px;
-  --inner-padding-end: 10px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  --min-height: 55px;
-}
-
-.modern-item ion-icon {
-  color: #999;
-  font-size: 1.2rem;
-  margin-right: 10px;
-}
-
-.modern-item.ion-focused {
-  --border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
-}
-
-.modern-item ion-input {
-  --color: white;
-  --placeholder-color: #888;
-  font-weight: 400;
+// Estilos para páginas con header fijo (no .auth-common)
+// Esto asegura que el contenido no se solape con el header fijo y añade espacio
+ion-content:not(.auth-common) {
+  // 80px (altura header) + 16px (espacio extra) + safe area
+  --padding-top: calc(80px + var(--ion-safe-area-top, 0px) + 16px);
 }

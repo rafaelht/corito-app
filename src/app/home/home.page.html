@@ -2,8 +2,8 @@
   <ion-toolbar>
     <ion-title class="home-title">Mis Coritos</ion-title>
     <ion-buttons slot="end">
-      <ion-button class="profile-button" (click)="openPopover($event)">
-        <ion-icon slot="icon-only" name="person-circle-outline"></ion-icon>
+      <ion-button class="profile-button" (click)="openPopover($event)" style="--padding-start: 12px; --padding-end: 12px;">
+        <ion-icon slot="icon-only" name="person-circle-outline" style="font-size: 3rem; width: 3rem; height: 3rem;"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -24,12 +24,12 @@
     <div *ngIf="!isLoading && events.length === 0" class="empty-state">
       <ion-icon name="calendar-outline"></ion-icon>
       <p>No tienes eventos todavía.</p>
-      <span>¡Crea tu primer evento para empezar!</span>
+      <span>¡Crea tu primer corito para empezar!</span>
     </div>
 
     <ion-grid *ngIf="!isLoading && events.length > 0">
       <ion-row>
-        <ion-col size="12" size-md="6" size-lg="4" *ngFor="let event of events">
+        <ion-col size="12" size-md="4" size-lg="4" *ngFor="let event of events">
           <ion-card class="event-card" [routerLink]="['/event-detail', event.id]">
             <ion-card-header>
               <div class="card-title-container">

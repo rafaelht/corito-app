@@ -19,14 +19,12 @@
       <div class="logo-container">
         <ion-icon name="calendar-outline" class="logo-icon"></ion-icon>
       </div>
-      <h1 class="brand-title">Coritos</h1>
-      <p class="brand-subtitle">Crea tu cuenta para empezar a organizar</p>
     </div>
-
+   
     <!-- Formulario de registro -->
     <div class="form-section">
       <div class="form-card">
-        <h2 class="form-title">Crear Cuenta</h2>
+        <h2 class="form-title">Registrate</h2>
         
         <form (submit)="register()" class="register-form">
           <div class="input-group">
@@ -110,21 +108,7 @@
               </ion-input>
             </div>
           </div>
-
-          <ion-button 
-            expand="block" 
-            type="submit" 
-            [disabled]="loading"
-            class="register-button">
-            <ion-icon name="person-add-outline" slot="start"></ion-icon>
-            {{ loading ? 'Creando...' : 'Crear Cuenta' }}
-          </ion-button>
         </form>
-
-        <!-- Separador -->
-        <div class="divider">
-          <span>o</span>
-        </div>
 
         <!-- Mensaje de error -->
         <div class="error-container" *ngIf="message">
@@ -132,11 +116,17 @@
           <p class="error-message">{{ message }}</p>
         </div>
       </div>
-    </div>
 
-    <!-- Footer -->
-    <div class="footer">
-      <p class="footer-text">© {{ currentYear }} Coritos. By Rafael H.</p>
+      <!-- Botón de registro fuera del form-card -->
+      <ion-button 
+        expand="block" 
+        type="button"
+        [disabled]="loading"
+        (click)="register()"
+        class="register-button">
+        <ion-icon name="person-add-outline" slot="start"></ion-icon>
+        {{ loading ? 'Creando...' : 'Crear Cuenta' }}
+      </ion-button>
     </div>
   </div>
 </ion-content>
