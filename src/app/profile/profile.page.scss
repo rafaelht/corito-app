@@ -1,26 +1,5 @@
 /* Estilos específicos para la página de perfil */
 
-ion-header {
-  --background: transparent;
-  background: transparent;
-  
-  ion-toolbar {
-    --background: transparent;
-    background: transparent;
-  }
-  
-  ion-title {
-    color: #e0e0e0;
-    font-weight: 600;
-    font-size: 1.2rem;
-    text-align: center !important;
-    position: absolute !important;
-    left: 0 !important;
-    right: 0 !important;
-    margin: 0 auto !important;
-  }
-}
-
 .top-section {
   display: flex;
   flex-direction: column;

@@ -1,21 +1,5 @@
 /* Estilos específicos para la página de detalle de evento */
 
-ion-header {
-  --background: transparent;
-  background: transparent;
-  
-  ion-toolbar {
-    --background: transparent;
-    background: transparent;
-  }
-  
-  ion-title {
-    color: #ffffff;
-    font-weight: 600;
-    font-size: 1.2rem;
-  }
-}
-
 ion-content {
   margin-top: 0;
 }
@@ -197,5 +181,64 @@ ion-list {
   
   .main-grid ion-col {
     margin-bottom: 12px;
+  }
+  
+  .header-container {
+    height: 150px;
+    margin-top: -50px;
+  }
+  
+  .event-title {
+    font-size: 1.5rem;
+  }
+  
+  .event-subtitle {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .centered-content {
+    padding: 0 4px;
+  }
+  
+  .main-grid {
+    margin-top: -20px;
+  }
+  
+  .main-grid ion-col {
+    margin-bottom: 8px;
+  }
+  
+  .header-container {
+    height: 120px;
+    margin-top: -30px;
+    padding: 15px;
+  }
+  
+  .event-title {
+    font-size: 1.3rem;
+  }
+  
+  .event-subtitle {
+    font-size: 0.8rem;
+  }
+  
+  .detail-item {
+    margin-bottom: 12px;
+    
+    ion-icon {
+      font-size: 1.5rem;
+      margin-right: 12px;
+    }
+    
+    ion-label {
+      h2 {
+        font-size: 0.8rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
   }
 }

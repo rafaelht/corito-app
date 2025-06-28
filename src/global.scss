@@ -32,503 +32,24 @@
  * https://ionicframework.com/docs/theming/dark-mode
  */
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.always.css";
 
-// Nueva paleta de colores: Azul celeste con blanco
+// Variables de color globales
 :root {
-  --primary-color: #87CEEB; // Azul celeste
-  --primary-light: #B0E0E6; // Azul celeste claro
-  --primary-dark: #5F9EA0; // Azul celeste oscuro
-  --accent-color: #E0F6FF; // Azul muy claro con blanco
-  --background-primary: #F0F8FF; // Azul muy claro (Alice Blue)
-  --background-secondary: #E6F3FF; // Azul claro con blanco
-  --background-card: #FFFFFF; // Blanco puro
-  --text-primary: #2F4F4F; // Gris oscuro para texto
-  --text-secondary: #5F9EA0; // Azul celeste oscuro para texto secundario
-  --border-color: #B0E0E6; // Azul celeste claro para bordes
-  --shadow-color: rgba(135, 206, 235, 0.2); // Sombra azul celeste
+  --primary-color: #87CEEB;
+  --primary-light: #B0E0E6;
+  --primary-dark: #5F9EA0;
+  --accent-color: #E0F6FF;
+  --background-primary: #F0F8FF;
+  --background-secondary: #E6F3FF;
+  --background-card: #FFFFFF;
+  --text-primary: #2F4F4F;
+  --text-secondary: #5F9EA0;
+  --border-color: #B0E0E6;
+  --shadow-color: rgba(135, 206, 235, 0.2);
 }
 
-// Common styles for auth and register pages
-.auth-common {
-  ion-content {
-    --background: linear-gradient(135deg, #0f0c29, #66628a, #8f8fb9);
-    background: linear-gradient(135deg, #574cb4, #6f69b4, #9292c0);
-    color: rgb(255, 255, 255);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-
-  .container {
-    width: 90%;
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding-top: var(--ion-safe-area-top);
-    padding-bottom: var(--ion-safe-area-bottom);
-    margin: auto;
-  }
-
-  .header {
-    text-align: center;
-    margin-bottom: 2rem;
-    width: 100%;
-  }
-
-  .title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.3rem;
-    margin: 0;
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    background: linear-gradient(45deg, #fff, #e0e0e0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .form-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .form {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .form-group {
-    margin-bottom: 1rem;
-    width: 100%;
-  }
-
-  .custom-input {
-    --background: rgba(255, 255, 255, 0.1);
-    --border-radius: 12px;
-    --border-style: none;
-    --padding-start: 16px;
-    --padding-end: 16px;
-    --padding-top: 6px;
-    --padding-bottom: 6px;
-    margin-bottom: 0.5rem;
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: all 0.3s ease;
-    min-height: 45px;
-    width: 100%;
-
-    &:hover {
-      --background: rgba(255, 255, 255, 0.15);
-      border-color: rgba(255, 255, 255, 0.3);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    }
-
-    &:focus-within {
-      --background: rgba(255, 255, 255, 0.2);
-      border-color: #4a90e2;
-      box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.3);
-    }
-    
-    // Estilos específicos para Android
-    &.md {
-      --background: rgba(255, 255, 255, 0.15);
-      background: rgba(255, 255, 255, 0.15);
-    }
-    
-    // Estilos específicos para iOS
-    &.ios {
-      --background: rgba(255, 255, 255, 0.1);
-      background: rgba(255, 255, 255, 0.1);
-    }
-  }
-
-  ion-label {
-    --color: rgba(255, 255, 255, 0.8);
-    font-weight: 500;
-    font-size: 0.9rem;
-  }
-
-  .input-field {
-    --color: white;
-    --placeholder-color: rgba(255, 255, 255, 0.6);
-    font-size: 1rem;
-    
-    // Forzar color en Android
-    color: white !important;
-    
-    // Estilos específicos para Android
-    &.md {
-      --color: white !important;
-      color: white !important;
-    }
-    
-    // Estilos específicos para iOS
-    &.ios {
-      --color: white !important;
-      color: white !important;
-    }
-  }
-
-  // Estilos adicionales para asegurar consistencia en inputs
-  ion-input {
-    --color: white !important;
-    color: white !important;
-    
-    &.md {
-      --color: white !important;
-      color: white !important;
-    }
-    
-    &.ios {
-      --color: white !important;
-      color: white !important;
-    }
-  }
-
-  // Estilos para labels en inputs
-  ion-label {
-    --color: rgba(255, 255, 255, 0.8);
-    font-weight: 500;
-    font-size: 0.9rem;
-    
-    // Forzar color en Android
-    color: rgba(255, 255, 255, 0.8) !important;
-    
-    &.md {
-      --color: rgba(255, 255, 255, 0.8) !important;
-      color: rgba(255, 255, 255, 0.8) !important;
-    }
-    
-    &.ios {
-      --color: rgba(255, 255, 255, 0.8) !important;
-      color: rgba(255, 255, 255, 0.8) !important;
-    }
-  }
-
-  .button-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    margin-top: 1.5rem;
-    width: 100%;
-  }
-
-  .primary-button {
-    --background: linear-gradient(135deg, #4a90e2, #357abd);
-    --background-hover: linear-gradient(135deg, #357abd, #2c5aa0);
-    --background-activated: linear-gradient(135deg, #2c5aa0, #1e3f7a);
-    --border-radius: 12px;
-    --padding-top: 16px;
-    --padding-bottom: 16px;
-    --padding-start: 16px;
-    --padding-end: 16px;
-    font-weight: 600;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);
-    transition: all 0.3s ease;
-    width: 100%;
-
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(74, 144, 226, 0.6);
-    }
-
-    &:active {
-      transform: translateY(0);
-    }
-  }
-
-  .secondary-button {
-    --background: transparent;
-    --color: white;
-    --border-color: rgba(255, 255, 255, 0.3);
-    --border-width: 2px;
-    --border-radius: 12px;
-    --padding-top: 16px;
-    --padding-bottom: 16px;
-    --padding-start: 16px;
-    --padding-end: 16px;
-    font-weight: 600;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    width: 100%;
-
-    &:hover {
-      --background: rgba(255, 255, 255, 0.1);
-      --border-color: rgba(255, 255, 255, 0.5);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
-    }
-
-    &:active {
-      transform: translateY(0);
-    }
-  }
-
-  .message-container {
-    margin-top: 0.75rem;
-    padding: 0.75rem;
-    border-radius: 8px;
-    text-align: center;
-    width: 100%;
-
-    p {
-      margin: 0;
-    }
-  }
-
-  .success-message {
-    background: rgba(76, 175, 80, 0.1);
-    border: 1px solid rgba(76, 175, 80, 0.3);
-    color: #4caf50;
-    font-weight: 500;
-  }
-
-  .error-message {
-    background: rgba(244, 67, 54, 0.1);
-    border: 1px solid rgba(244, 67, 54, 0.3);
-    color: #ff6b6b;
-    font-weight: 500;
-  }
-
-  .custom-footer {
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
-
-  .footer-content {
-    padding: 0.75rem 1rem;
-    text-align: center;
-  }
-
-  .footer-text {
-    margin: 0;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.8rem;
-    font-weight: 400;
-  }
-
-  .footer-link {
-    color: #4a90e2;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s ease;
-
-    &:hover {
-      color: #357abd;
-      text-decoration: underline;
-    }
-  }
-
-  @media (min-width: 768px) {
-    ion-content {
-      padding: 3rem;
-      padding-bottom: 5rem;
-    }
-    
-    .container {
-      max-width: 450px;
-    }
-    
-    .title {
-      font-size: 3rem;
-      letter-spacing: 0.5rem;
-    }
-    
-    .form {
-      max-width: 450px;
-    }
-    
-    .button-group {
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-    
-    .footer-content {
-      padding: 1rem 2rem;
-    }
-    
-    .footer-text {
-      font-size: 0.9rem;
-    }
-  }
-}
-
-// Estilos adicionales para asegurar consistencia en inputs en todas las plataformas
-.auth-common {
-  // Forzar colores en inputs para Android
-  ion-input.md {
-    --color: white !important;
-    color: white !important;
-    
-    &::placeholder {
-      color: rgba(255, 255, 255, 0.6) !important;
-    }
-  }
-  
-  // Forzar colores en inputs para iOS
-  ion-input.ios {
-    --color: white !important;
-    color: white !important;
-    
-    &::placeholder {
-      color: rgba(255, 255, 255, 0.6) !important;
-    }
-  }
-  
-  // Estilos para modo oscuro
-  @media (prefers-color-scheme: dark) {
-    ion-input {
-      --color: white !important;
-      color: white !important;
-    }
-    
-    ion-label {
-      --color: rgba(255, 255, 255, 0.8) !important;
-      color: rgba(255, 255, 255, 0.8) !important;
-    }
-  }
-  
-  // Estilos específicos para inputs con ngModel
-  ion-input[ngModel] {
-    --color: white !important;
-    color: white !important;
-  }
-  
-  // Estilos para inputs con type específico
-  ion-input[type="email"],
-  ion-input[type="password"],
-  ion-input[type="text"] {
-    --color: white !important;
-    color: white !important;
-  }
-}
-
-// Estilos con máxima especificidad para forzar colores en inputs
-.auth-common .form-container .form .form-group .custom-input ion-input {
-  --color: white !important;
-  color: white !important;
-}
-
-.auth-common .form-container .form .form-group .custom-input ion-label {
-  --color: rgba(255, 255, 255, 0.8) !important;
-  color: rgba(255, 255, 255, 0.8) !important;
-}
-
-// Estilos específicos para Android con máxima especificidad
-.md .auth-common .form-container .form .form-group .custom-input ion-input {
-  --color: white !important;
-  color: white !important;
-}
-
-// Estilos específicos para iOS con máxima especificidad
-.ios .auth-common .form-container .form .form-group .custom-input ion-input {
-  --color: white !important;
-  color: white !important;
-}
-
-// Estilos específicos para Android con máxima especificidad
-.ios .auth-common .form-container .form .form-group .custom-input ion-input {
-  --color: white !important;
-  color: white !important;
-}
-
-// Solución final más robusta para inputs en auth
-.auth-common {
-  ion-item.custom-input {
-    ion-input {
-      --color: white !important;
-      color: white !important;
-      
-      &::part(native) {
-        color: white !important;
-      }
-      
-      &::part(placeholder) {
-        color: rgba(255, 255, 255, 0.6) !important;
-      }
-    }
-    
-    ion-label {
-      --color: rgba(255, 255, 255, 0.8) !important;
-      color: rgba(255, 255, 255, 0.8) !important;
-    }
-  }
-}
-
-// Estilos específicos para Android usando ::part
-.md .auth-common ion-item.custom-input ion-input::part(native) {
-  color: white !important;
-}
-
-// Estilos específicos para iOS usando ::part
-.ios .auth-common ion-item.custom-input ion-input::part(native) {
-  color: white !important;
-}
-
-// Estilos para el modo oscuro
-@media (prefers-color-scheme: dark) {
-  .auth-common ion-item.custom-input ion-input {
-    --color: white !important;
-    color: white !important;
-  }
-}
-
-// Estilos para forzar el color en todos los inputs de auth
-.auth-common ion-input {
-  --color: white !important;
-  color: white !important;
-  
-  &::part(native) {
-    color: white !important;
-  }
-}
-
-// Estilos globales para botones de back
-ion-header {
-  &::after {
-    display: none;
-  }
-}
-
-ion-toolbar {
-  --background: transparent;
-  --padding-start: 16px;
-  --padding-end: 16px;
-  --padding-top: 12px;
-  --padding-bottom: 12px;
-  --min-height: 44px;
-  --min-width: 44px;
-}
-
-// Estilos para el fondo animado
+// Estilos para el fondo animado de auth
 .background-animation {
   position: fixed;
   top: 0;
@@ -555,6 +76,12 @@ ion-toolbar {
   50% { opacity: 0.8; }
 }
 
+// Estilos específicos para páginas de autenticación
+.auth-content {
+  --background: transparent;
+  background: transparent;
+}
+
 .auth-container {
   display: flex;
   flex-direction: column;
@@ -562,29 +89,22 @@ ion-toolbar {
   padding: 10px;
   position: relative;
   z-index: 1;
+  
+  // Ajuste para pantallas de escritorio
+  @media (min-width: 768px) {
+    padding-top: 80px; /* Espacio para el header en escritorio */
+  }
+  
+  // Ajuste para pantallas muy grandes
+  @media (min-width: 1024px) {
+    padding-top: 100px; /* Más espacio para pantallas grandes */
+  }
 }
 
 .brand-section {
   text-align: center;
   margin-bottom: 0px;
   margin-top: -40px;
-}
-
-.logo-container {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 80px;
-  height: 80px;
-  background: #2c2c2e;
-  border-radius: 50%;
-  margin-bottom: 20px;
-  border: 1px solid #444;
-}
-
-.logo-icon {
-  font-size: 2.5rem;
-  color: white;
 }
 
 .brand-title {
@@ -610,6 +130,19 @@ ion-toolbar {
   justify-content: center;
   margin-top: -250px;
   min-height: 0;
+  
+  // Ajuste para pantallas de escritorio
+  @media (min-width: 768px) {
+    justify-content: flex-start;
+    margin-top: 50px;
+    padding-top: 20px;
+  }
+  
+  // Ajuste para pantallas muy grandes
+  @media (min-width: 1024px) {
+    margin-top: 80px;
+    padding-top: 40px;
+  }
 }
 
 .form-card {
@@ -657,6 +190,7 @@ ion-toolbar {
   margin-right: 0;
 }
 
+// Estilos para inputs modernos (auth y register)
 .modern-input {
   --background: transparent !important;
   --color: white !important;
@@ -671,207 +205,74 @@ ion-toolbar {
   border: none !important;
   box-shadow: none !important;
   border-radius: 0 !important;
-  padding-left: 0 !important;
   --border-width: 0 !important;
   --inner-border-width: 0 !important;
   --border-color: transparent !important;
   --border-style: none !important;
   --lines: none !important;
-  --highlight-height: 0 !important;
-  --highlight-color: transparent !important;
-}
+  caret-color: white !important;
 
-.modern-input::part(native) {
-  background: transparent !important;
-  color: white !important;
-  border: none !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
-  padding: 18px 0 18px 0 !important;
-  --border-width: 0 !important;
-  --inner-border-width: 0 !important;
-  --border-color: transparent !important;
-  --border-style: none !important;
-  --lines: none !important;
-  --highlight-height: 0 !important;
-  --highlight-color: transparent !important;
-}
-
-.modern-input::part(placeholder) {
-  color: #888 !important;
-}
-
-.modern-input::part(container) {
-  border: none !important;
-  --border-width: 0 !important;
-  --inner-border-width: 0 !important;
-  --lines: none !important;
-  --highlight-height: 0 !important;
-  --highlight-color: transparent !important;
-}
-
-.modern-input::part(wrapper) {
-  border: none !important;
-  --border-width: 0 !important;
-  --inner-border-width: 0 !important;
-  --lines: none !important;
-  --highlight-height: 0 !important;
-  --border-color: transparent !important;
-  --border-style: none !important;
   &::part(native) {
-    color: white !important;
     background: transparent !important;
+    color: white !important;
     border: none !important;
     box-shadow: none !important;
     border-radius: 0 !important;
     padding: 18px 0 18px 0 !important;
-    --border-width: 0 !important;
-    --inner-border-width: 0 !important;
-    --border-color: transparent !important;
-    --border-style: none !important;
+    caret-color: white !important;
   }
+
   &::part(placeholder) {
     color: #888 !important;
   }
-  &::part(container) {
-    border: none !important;
-    --border-width: 0 !important;
-    --inner-border-width: 0 !important;
-  }
 }
 
-// Forzar colores en inputs para todas las plataformas
-ion-input.modern-input {
-  --color: white !important;
-  color: white !important;
-  --border-width: 0 !important;
-  --inner-border-width: 0 !important;
-  --border-color: transparent !important;
-  --border-style: none !important;
-  --lines: none !important;
-  --highlight-height: 0 !important;
-  --highlight-color: transparent !important;
+// Estilos para items modernos
+.modern-item {
+  --background: #3a3a3c;
+  --border-color: transparent;
+  --border-radius: 12px;
+  --border-width: 0;
+  --border-style: none;
+  --padding-start: 10px;
+  --inner-padding-end: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  --min-height: 55px;
+  border: none;
+  --inner-border-width: 0;
+  --lines: none;
+
   &::part(native) {
-    color: white !important;
-    background: transparent !important;
     border: none !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-    padding: 18px 0 18px 0 !important;
-    --border-width: 0 !important;
-    --inner-border-width: 0 !important;
-    --border-color: transparent !important;
-    --border-style: none !important;
-    --lines: none !important;
-    --highlight-height: 0 !important;
-    --highlight-color: transparent !important;
   }
-  &::part(placeholder) {
-    color: #888 !important;
+
+  ion-icon {
+    color: #999;
+    font-size: 1.2rem;
+    margin-right: 0;
   }
-  &::part(container) {
-    border: none !important;
-    --border-width: 0 !important;
-    --inner-border-width: 0 !important;
-    --lines: none !important;
-    --highlight-height: 0 !important;
-    --highlight-color: transparent !important;
+
+  &.ion-focused {
+    --border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
   }
-  &::part(wrapper) {
-    border: none !important;
-    --border-width: 0 !important;
-    --inner-border-width: 0 !important;
-    --lines: none !important;
-    --highlight-height: 0 !important;
-    --highlight-color: transparent !important;
+
+  ion-input {
+    --color: white;
+    --placeholder-color: #888;
+    font-weight: 400;
+    --padding-start: 0;
+    --border-width: 0;
+    --inner-border-width: 0;
+    --lines: none;
+    caret-color: white;
   }
 }
 
-// Estilos específicos para Android
-.md ion-input.modern-input {
-  --color: white !important;
-  color: white !important;
-  --border-width: 0 !important;
-  --inner-border-width: 0 !important;
-  --lines: none !important;
-  --highlight-height: 0 !important;
-  --highlight-color: transparent !important;
-  &::part(native) {
-    color: white !important;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-    padding: 18px 0 18px 0 !important;
-    --border-width: 0 !important;
-    --inner-border-width: 0 !important;
-    --border-color: transparent !important;
-    --border-style: none !important;
-    --lines: none !important;
-    --highlight-height: 0 !important;
-    --highlight-color: transparent !important;
-  }
-  &::part(container) {
-    border: none !important;
-    --border-width: 0 !important;
-    --inner-border-width: 0 !important;
-    --lines: none !important;
-    --highlight-height: 0 !important;
-    --highlight-color: transparent !important;
-  }
-  &::part(wrapper) {
-    border: none !important;
-    --border-width: 0 !important;
-    --inner-border-width: 0 !important;
-    --lines: none !important;
-    --highlight-height: 0 !important;
-    --highlight-color: transparent !important;
-  }
-}
-
-// Estilos específicos para iOS
-.ios ion-input.modern-input {
-  --color: white !important;
-  color: white !important;
-  --border-width: 0 !important;
-  --inner-border-width: 0 !important;
-  --lines: none !important;
-  --highlight-height: 0 !important;
-  --highlight-color: transparent !important;
-  &::part(native) {
-    color: white !important;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-    padding: 18px 0 18px 0 !important;
-    --border-width: 0 !important;
-    --inner-border-width: 0 !important;
-    --border-color: transparent !important;
-    --border-style: none !important;
-    --lines: none !important;
-    --highlight-height: 0 !important;
-    --highlight-color: transparent !important;
-  }
-  &::part(container) {
-    border: none !important;
-    --border-width: 0 !important;
-    --inner-border-width: 0 !important;
-    --lines: none !important;
-    --highlight-height: 0 !important;
-    --highlight-color: transparent !important;
-  }
-  &::part(wrapper) {
-    border: none !important;
-    --border-width: 0 !important;
-    --inner-border-width: 0 !important;
-    --lines: none !important;
-    --highlight-height: 0 !important;
-    --highlight-color: transparent !important;
-  }
-}
-
-.login-button, .register-button {
+// Botones de login y registro
+.login-button {
   --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --color: white;
   --border-radius: 12px;
@@ -884,56 +285,39 @@ ion-input.modern-input {
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
   border-radius: 12px;
   overflow: hidden;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  }
 }
 
-.login-button::part(native), .register-button::part(native) {
-  border-radius: 12px !important;
-  overflow: hidden;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-// Color específico para el botón de registro
+// Botón de registro secundario (en auth page)
 .register-button {
   --background: transparent;
   --border-color: #4facfe;
   --border-width: 2px;
   --border-style: solid;
   --color: #4facfe;
+  --border-radius: 12px;
+  --padding-top: 15px;
+  --padding-bottom: 15px;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 10px;
+  transition: all 0.3s ease;
   box-shadow: none;
+  border-radius: 12px;
+  overflow: hidden;
+
+  &:hover {
+    --background: rgba(79, 172, 254, 0.1);
+    box-shadow: 0 4px 15px rgba(79, 172, 254, 0.2);
+    transform: translateY(-2px);
+  }
 }
 
-.register-button::part(native) {
-  background: transparent;
-  border: 2px solid #4facfe;
-  color: #4facfe;
-}
-
-.register-button:hover {
-  --background: rgba(79, 172, 254, 0.1);
-  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.2);
-}
-
-.register-button:hover::part(native) {
-  background: rgba(79, 172, 254, 0.1);
-}
-
-.login-button:hover, .register-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-}
-
-.login-button[fill="outline"] {
-  --background: transparent;
-  --border-color: #555;
-  --color: white;
-  box-shadow: none;
-}
-
-.login-button[fill="outline"]:hover {
-  --background: #3a3a3c;
-  transform: translateY(-1px);
-}
-
+// Separador
 .divider {
   text-align: center;
   margin: 25px 0;
@@ -958,6 +342,7 @@ ion-input.modern-input {
   font-weight: 500;
 }
 
+// Contenedor de error
 .error-container {
   display: flex;
   align-items: center;
@@ -981,82 +366,158 @@ ion-input.modern-input {
   font-weight: 500;
 }
 
-.footer {
-  text-align: center;
-  margin-top: 40px;
-  padding-bottom: 20px;
+// Estilos para headers
+ion-header {
+  &::after {
+    display: none;
+  }
 }
 
-.footer-text {
+ion-toolbar {
+  --background: transparent;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  --min-height: 44px;
+  --min-width: 44px;
+}
+
+// Estilos para headers fijos
+ion-header:not(.auth-header) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  
+  ion-toolbar {
+    --background: rgba(15, 12, 41, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+
+// Estilos para páginas con header fijo
+ion-content:not(.auth-common) {
+  --padding-top: calc(80px + var(--ion-safe-area-top, 0px) + 16px);
+}
+
+// Estilos globales para el contenido
+ion-content {
+  --background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+}
+
+// Estilos globales para inputs
+ion-input {
+  caret-color: white;
+}
+
+// Estilos para cards
+ion-card {
+  background: rgba(44, 44, 46, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  margin: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+ion-card-header, ion-card-content {
+  padding: 16px;
+}
+
+// Estilos para section headers
+.section-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  font-size: 0.8rem;
-  margin: 0;
+  padding: 20px;
+  border-radius: 18px 18px 0 0;
+  margin: -1px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+
+  h2 {
+    font-weight: 700;
+  }
+  p {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.9em;
+  }
 }
 
-/* Estilos para los items modernos en auth y register */
-.modern-item {
-  --background: #3a3a3c;
+// Estilos para inputs estándar
+ion-item {
+  --background: transparent;
   --border-color: transparent;
-  --border-radius: 12px;
   --border-width: 0;
   --border-style: none;
-  --padding-start: 10px;
-  --inner-padding-end: 10px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  --min-height: 55px;
-  border: none;
-  --inner-border-width: 0;
-  --border-width: 0;
-  --lines: none;
-  --highlight-height: 0;
-  --highlight-color: transparent;
-}
-
-.modern-item::part(native) {
-  border: none !important;
-  --border-width: 0 !important;
-  --inner-border-width: 0 !important;
-  --lines: none !important;
-  --highlight-height: 0 !important;
-  --highlight-color: transparent !important;
-}
-
-.modern-item::part(inner) {
-  border: none !important;
-  --border-width: 0 !important;
-  --inner-border-width: 0 !important;
-  --lines: none !important;
-}
-
-.modern-item::part(wrapper) {
-  border: none !important;
-  --border-width: 0 !important;
-  --inner-border-width: 0 !important;
-  --lines: none !important;
-}
-
-.modern-item ion-icon {
-  color: #999;
-  font-size: 1.2rem;
-  margin-right: 0;
-}
-
-.modern-item.ion-focused {
-  --border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
-}
-
-.modern-item ion-input {
-  --color: white;
-  --placeholder-color: #888;
-  font-weight: 400;
   --padding-start: 0;
-  --border-width: 0;
-  --inner-border-width: 0;
-  --lines: none;
-  --highlight-height: 0;
+  --padding-end: 0;
+  --inner-padding-end: 0;
+  margin-bottom: 16px;
+  --min-height: auto;
+  padding-top: 4px;
+
+  &:last-child {
+    --border-width: 0;
+  }
+}
+
+ion-label {
+  --color: #e0e0e0;
+  font-weight: 500;
+  font-size: 0.8rem;
+  margin-bottom: 8px;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-top: 8px;
+  padding-bottom: 4px;
+}
+
+ion-input, ion-textarea {
+  --background: #3a3a3c;
+  --color: #f5f5f5;
+  --placeholder-color: #888;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 16px;
+  --padding-bottom: 16px;
+  font-size: 1rem;
+  --border-radius: 8px;
+  --border-width: 1px;
+  --border-color: #555;
+  --border-style: solid;
+  transition: all 0.3s ease;
+  margin-top: 4px;
+  border-radius: 8px;
+  background: #3a3a3c;
+  overflow: hidden;
+
+  &::part(native) {
+    background: #3a3a3c !important;
+    border-radius: 8px !important;
+    border: 1px solid #555 !important;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+
+  &::part(placeholder) {
+    color: #888;
+  }
+
+  &:focus-within {
+    --border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+    border-color: #667eea;
+
+    &::part(native) {
+      border-color: #667eea !important;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+    }
+  }
 }
 
 // Footer fijo para dispositivos móviles
@@ -1069,20 +530,20 @@ ion-input.modern-input {
   padding: 15px 20px;
   padding-bottom: calc(15px + env(safe-area-inset-bottom));
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+  .footer-text {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.75rem;
+    margin: 0;
+    font-weight: 400;
+  }
 }
 
-.fixed-footer .footer-text {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.75rem;
-  margin: 0;
-  font-weight: 400;
-}
-
-// Estilos para cuando el teclado está abierto en dispositivos móviles
+// Media queries responsivos para auth
 @media (max-height: 500px) {
   .fixed-footer {
     position: relative;
@@ -1103,7 +564,6 @@ ion-input.modern-input {
   }
 }
 
-// Estilos específicos para dispositivos móviles con teclado abierto
 @media (max-height: 400px) {
   .fixed-footer {
     display: none;
@@ -1136,7 +596,6 @@ ion-input.modern-input {
   }
 }
 
-// Estilos para dispositivos móviles con teclado muy abierto
 @media (max-height: 300px) {
   .fixed-footer {
     display: none;
@@ -1156,7 +615,6 @@ ion-input.modern-input {
   }
 }
 
-// Estilos responsivos para dispositivos móviles
 @media (max-width: 480px) {
   .auth-container {
     padding: 8px;
@@ -1231,228 +689,4 @@ ion-input.modern-input {
     margin-top: 10px;
     padding-bottom: 5px;
   }
-}
-
-// Estilos comunes para todas las páginas
-ion-content {
-  --background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-}
-
-// Estilos comunes para cards
-ion-card {
-  background: rgba(44, 44, 46, 0.8);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 20px;
-  margin: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-ion-card-header, ion-card-content {
-  padding: 16px;
-}
-
-// Estilos para section headers
-.section-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 20px;
-  border-radius: 18px 18px 0 0;
-  margin: -1px;
-  margin-bottom: 10px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-
-  h2 {
-    font-weight: 700;
-  }
-  p {
-    color: rgba(255,255,255,0.8);
-    font-size: 0.9em;
-  }
-}
-
-// Estilos para inputs estándar en otras páginas (create-event, profile, etc.)
-ion-item {
-  --background: transparent;
-  --border-color: transparent;
-  --border-width: 0;
-  --border-style: none;
-  --padding-start: 0;
-  --padding-end: 0;
-  --inner-padding-end: 0;
-  margin-bottom: 16px;
-  --min-height: auto;
-  padding-top: 4px;
-}
-
-ion-item:last-child {
-  --border-width: 0;
-}
-
-ion-label {
-  --color: #e0e0e0;
-  font-weight: 500;
-  font-size: 0.9rem;
-  margin-bottom: 8px;
-  opacity: 0.8;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-size: 0.8rem;
-  display: block;
-  margin-top: 8px;
-  padding-bottom: 4px;
-}
-
-ion-input, ion-textarea {
-  --background: #3a3a3c;
-  --color: #f5f5f5;
-  --placeholder-color: #888;
-  --padding-start: 16px;
-  --padding-end: 16px;
-  --padding-top: 16px;
-  --padding-bottom: 16px;
-  font-size: 1rem;
-  --border-radius: 8px;
-  --border-width: 1px;
-  --border-color: #555;
-  --border-style: solid;
-  transition: all 0.3s ease;
-  margin-top: 4px;
-  border-radius: 8px;
-  background: #3a3a3c;
-  overflow: hidden;
-}
-
-ion-input::part(native), ion-textarea::part(native) {
-  background: #3a3a3c !important;
-  border-radius: 8px !important;
-  border: 1px solid #555 !important;
-  transition: all 0.3s ease;
-  overflow: hidden;
-}
-
-ion-input::part(placeholder), ion-textarea::part(placeholder) {
-  color: #888;
-}
-
-// Efectos de focus para inputs estándar
-ion-input:focus-within, ion-textarea:focus-within {
-  --border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
-  border-color: #667eea;
-}
-
-ion-input:focus-within::part(native), ion-textarea:focus-within::part(native) {
-  border-color: #667eea !important;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
-}
-
-// Estilos específicos para Android
-.md ion-item ion-input,
-.md ion-item ion-textarea {
-  --color: #f5f5f5 !important;
-  color: #f5f5f5 !important;
-  --background: #3a3a3c !important;
-  background: #3a3a3c !important;
-  border-radius: 8px !important;
-}
-
-.md ion-item ion-input::part(native),
-.md ion-item ion-textarea::part(native) {
-  background: #3a3a3c !important;
-  border-radius: 8px !important;
-}
-
-.md ion-item ion-label {
-  --color: #e0e0e0 !important;
-  color: #e0e0e0 !important;
-}
-
-// Estilos específicos para iOS
-.ios ion-item ion-input,
-.ios ion-item ion-textarea {
-  --color: #f5f5f5 !important;
-  color: #f5f5f5 !important;
-  --background: #3a3a3c !important;
-  background: #3a3a3c !important;
-  border-radius: 8px !important;
-}
-
-.ios ion-item ion-input::part(native),
-.ios ion-item ion-textarea::part(native) {
-  background: #3a3a3c !important;
-  border-radius: 8px !important;
-}
-
-.ios ion-item ion-label {
-  --color: #e0e0e0 !important;
-  color: #e0e0e0 !important;
-}
-
-// Estilos para headers fijos
-ion-header:not(.auth-header) {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  
-  ion-toolbar {
-    --background: rgba(15, 12, 41, 0.75);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-  }
-}
-
-// Estilos para páginas con header fijo (no .auth-common)
-// Esto asegura que el contenido no se solape con el header fijo y añade espacio
-ion-content:not(.auth-common) {
-  // 80px (altura header) + 16px (espacio extra) + safe area
-  --padding-top: calc(80px + var(--ion-safe-area-top, 0px) + 16px);
-}
-
-// Estilos globales para eliminar líneas en auth y register
-.auth-content .modern-item,
-.auth-content .modern-input,
-.auth-content ion-item,
-.auth-content ion-input {
-  --lines: none !important;
-  --highlight-height: 0 !important;
-  --highlight-color: transparent !important;
-  --border-width: 0 !important;
-  --inner-border-width: 0 !important;
-  --border-color: transparent !important;
-  --border-style: none !important;
-}
-
-.auth-content .modern-item::part(native),
-.auth-content .modern-item::part(inner),
-.auth-content .modern-item::part(wrapper),
-.auth-content .modern-input::part(native),
-.auth-content .modern-input::part(container),
-.auth-content .modern-input::part(wrapper) {
-  --lines: none !important;
-  --highlight-height: 0 !important;
-  --highlight-color: transparent !important;
-  --border-width: 0 !important;
-  --inner-border-width: 0 !important;
-  --border-color: transparent !important;
-  --border-style: none !important;
-  border: none !important;
-}
-
-.auth-content ion-item.modern-item,
-.auth-content ion-item.modern-item::part(native),
-.auth-content ion-item.modern-item::part(inner),
-.auth-content ion-item.modern-item::part(wrapper) {
-  border: none !important;
-  box-shadow: none !important;
-  --border-width: 0 !important;
-  --inner-border-width: 0 !important;
-  --border-color: transparent !important;
-  --border-style: none !important;
-  --background: #3a3a3c !important;
-  --highlight-height: 0 !important;
-  --highlight-color: transparent !important;
-  --min-height: 55px !important;
 }

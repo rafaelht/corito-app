@@ -1,2 +1,17 @@
+// Variables de color para la aplicación
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+
+:root {
+  --primary-color: #87CEEB;
+  --primary-light: #B0E0E6;
+  --primary-dark: #5F9EA0;
+  --accent-color: #E0F6FF;
+  --background-primary: #F0F8FF;
+  --background-secondary: #E6F3FF;
+  --background-card: #FFFFFF;
+  --text-primary: #2F4F4F;
+  --text-secondary: #5F9EA0;
+  --border-color: #B0E0E6;
+  --shadow-color: rgba(135, 206, 235, 0.2);
+} 

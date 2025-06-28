@@ -198,21 +198,6 @@ ion-badge {
   --padding-bottom: 8px;
   
   ion-icon {
-    font-size: 3rem !important;
-    width: 3rem !important;
-    height: 3rem !important;
+    font-size: 1.2rem;
   }
-}
-
-ion-button.profile-button ion-icon[name="person-circle-outline"] {
-  font-size: 3rem !important;
-  width: 3rem !important;
-  height: 3rem !important;
-  --ionicon-stroke-width: 32px;
-}
-
-ion-buttons[slot="end"] ion-button ion-icon[name="person-circle-outline"] {
-  font-size: 3rem !important;
-  width: 3rem !important;
-  height: 3rem !important;
 } 
