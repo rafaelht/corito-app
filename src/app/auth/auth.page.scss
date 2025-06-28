@@ -1,2 +1,172 @@
 /* Estilos específicos para auth page */
-/* Todos los estilos están en global.scss */ 
+/* Todos los estilos están en global.scss */
+
+/* Asegurar que el título y subtítulo siempre sean visibles */
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.brand-section {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  flex-shrink: 0; /* Evitar que se comprima */
+  z-index: 10; /* Asegurar que esté por encima */
+  position: relative;
+}
+
+.brand-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 8px 0;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block; /* Para que el pseudo-elemento tome el ancho del texto */
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    width: 100%; /* Ocupa todo el ancho del texto */
+    height: 2px;
+    background: linear-gradient(90deg, #87CEEB, #B0E0E6);
+    border-radius: 1px;
+  }
+}
+
+.brand-subtitle {
+  font-size: 1rem;
+  color: #ccc;
+  margin: 0;
+  font-weight: 400;
+}
+
+.form-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 0; /* Eliminar el margin negativo */
+  min-height: 0;
+  z-index: 5;
+}
+
+.form-card {
+  background: #2c2c2e;
+  border-radius: 20px;
+  padding: 30px 25px;
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid #444;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 480px) {
+  .auth-container {
+    padding: 5px;
+  }
+  
+  .brand-section {
+    margin-bottom: 15px;
+    margin-top: 10px;
+  }
+  
+  .brand-title {
+    font-size: 2rem;
+    
+    &::after {
+      height: 1.5px;
+      bottom: -3px;
+    }
+  }
+  
+  .brand-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .form-card {
+    padding: 20px 15px;
+  }
+}
+
+/* Para pantallas muy pequeñas */
+@media (max-width: 360px) {
+  .brand-title {
+    font-size: 1.8rem;
+    
+    &::after {
+      height: 1px;
+      bottom: -2px;
+    }
+  }
+  
+  .brand-subtitle {
+    font-size: 0.8rem;
+  }
+  
+  .form-card {
+    padding: 15px 12px;
+  }
+}
+
+/* Para pantallas con altura reducida */
+@media (max-height: 600px) {
+  .brand-section {
+    margin-bottom: 10px;
+    margin-top: 5px;
+  }
+  
+  .brand-title {
+    font-size: 1.8rem;
+    margin-bottom: 4px;
+    
+    &::after {
+      height: 1px;
+      bottom: -2px;
+    }
+  }
+  
+  .brand-subtitle {
+    font-size: 0.8rem;
+  }
+  
+  .form-card {
+    padding: 15px 12px;
+  }
+}
+
+/* Para pantallas con altura muy reducida */
+@media (max-height: 500px) {
+  .brand-section {
+    margin-bottom: 5px;
+    margin-top: 2px;
+  }
+  
+  .brand-title {
+    font-size: 1.5rem;
+    margin-bottom: 2px;
+    
+    &::after {
+      height: 1px;
+      bottom: -1px;
+    }
+  }
+  
+  .brand-subtitle {
+    font-size: 0.7rem;
+  }
+  
+  .form-card {
+    padding: 10px 10px;
+  }
+} 

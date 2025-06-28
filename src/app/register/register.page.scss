@@ -16,8 +16,8 @@ ion-toolbar {
 }
 
 .auth-container {
-  padding-top: 56px; /* Altura estándar del header de Ionic */
-  padding-bottom: 80px; /* Espacio para el footer */
+  padding-top: 0px; /* Reducido de 56px a 0px para eliminar espacio */
+  padding-bottom: 30px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -37,19 +37,19 @@ ion-title {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 20px 10px;
-  margin-top: 20px;
+  padding: 0px 10px;
+  margin-top: 0px;
 }
 
 .form-card {
   width: 100%;
   max-width: 400px;
-  padding: 30px 20px;
-  margin-bottom: 20px;
+  padding: 10px 20px; /* Reducido de 15px a 10px */
+  margin-bottom: 0px; /* Reducido de 5px a 0px */
 }
 
 .input-group {
-  margin-bottom: 16px;
+  margin-bottom: 1px; /* Reducido de 4px a 1px */
 }
 
 .register-button {
@@ -61,7 +61,7 @@ ion-title {
   --border-radius: 8px;
   font-weight: 500;
   text-transform: none;
-  margin-top: 16px;
+  margin-top: 1px; /* Reducido de 4px a 1px */
   width: 100%;
   
   &:hover {
@@ -77,44 +77,44 @@ ion-title {
 /* Responsive adjustments for mobile */
 @media (max-width: 480px) {
   .auth-container {
-    padding: 10px;
-    padding-top: 56px;
-    padding-bottom: 80px;
+    padding: 0px;
+    padding-top: 0px; /* Reducido de 56px a 0px */
+    padding-bottom: 30px;
   }
   
   .form-section {
-    padding: 10px 5px;
-    margin-top: 10px;
+    padding: 0px 5px;
+    margin-top: 0px;
   }
   
   .form-card {
-    padding: 25px 15px;
-    margin-bottom: 15px;
+    padding: 5px 15px; /* Reducido de 10px a 5px */
+    margin-bottom: 0px; /* Reducido de 3px a 0px */
   }
   
   .input-group {
-    margin-bottom: 12px;
+    margin-bottom: 0px; /* Reducido de 3px a 0px */
   }
   
   .form-title {
     font-size: 1.3rem;
-    margin-bottom: 25px;
+    margin-bottom: 2px; /* Reducido de 8px a 2px */
   }
 }
 
 /* Responsive adjustments for very small screens */
 @media (max-width: 360px) {
   .form-card {
-    padding: 20px 12px;
+    padding: 3px 12px; /* Reducido de 8px a 3px */
   }
   
   .form-title {
     font-size: 1.2rem;
-    margin-bottom: 20px;
+    margin-bottom: 1px; /* Reducido de 5px a 1px */
   }
   
   .input-group {
-    margin-bottom: 10px;
+    margin-bottom: 0px; /* Reducido de 2px a 0px */
   }
 }
 
