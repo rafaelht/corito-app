@@ -25,8 +25,8 @@
         
         <form (submit)="register()" class="register-form">
           <div class="input-group">
-            <div class="input-wrapper">
-              <ion-icon name="person-outline" class="input-icon"></ion-icon>
+            <ion-item class="modern-item" lines="none" style="--background: #3a3a3c; --border-width: 0; --inner-border-width: 0; --border-color: transparent; --box-shadow: none;">
+              <ion-icon name="person-outline" slot="start" class="input-icon"></ion-icon>
               <ion-input
                 [(ngModel)]="firstName" 
                 name="firstName" 
@@ -34,12 +34,12 @@
                 required
                 class="modern-input">
               </ion-input>
-            </div>
+            </ion-item>
           </div>
 
           <div class="input-group">
-            <div class="input-wrapper">
-              <ion-icon name="person-outline" class="input-icon"></ion-icon>
+            <ion-item class="modern-item" lines="none" style="--background: #3a3a3c; --border-width: 0; --inner-border-width: 0; --border-color: transparent; --box-shadow: none;">
+              <ion-icon name="person-outline" slot="start" class="input-icon"></ion-icon>
               <ion-input
                 [(ngModel)]="lastName" 
                 name="lastName" 
@@ -47,12 +47,12 @@
                 required
                 class="modern-input">
               </ion-input>
-            </div>
+            </ion-item>
           </div>
 
           <div class="input-group">
-            <div class="input-wrapper">
-              <ion-icon name="mail-outline" class="input-icon"></ion-icon>
+            <ion-item class="modern-item" lines="none" style="--background: #3a3a3c; --border-width: 0; --inner-border-width: 0; --border-color: transparent; --box-shadow: none;">
+              <ion-icon name="mail-outline" slot="start" class="input-icon"></ion-icon>
               <ion-input
                 [(ngModel)]="email" 
                 name="email" 
@@ -61,12 +61,12 @@
                 required
                 class="modern-input">
               </ion-input>
-            </div>
+            </ion-item>
           </div>
 
           <div class="input-group">
-            <div class="input-wrapper">
-              <ion-icon name="mail-outline" class="input-icon"></ion-icon>
+            <ion-item class="modern-item" lines="none" style="--background: #3a3a3c; --border-width: 0; --inner-border-width: 0; --border-color: transparent; --box-shadow: none;">
+              <ion-icon name="mail-outline" slot="start" class="input-icon"></ion-icon>
               <ion-input 
                 [(ngModel)]="confirmEmail" 
                 name="confirmEmail" 
@@ -75,12 +75,12 @@
                 required
                 class="modern-input">
               </ion-input>
-            </div>
+            </ion-item>
           </div>
 
           <div class="input-group">
-            <div class="input-wrapper">
-              <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+            <ion-item class="modern-item" lines="none" style="--background: #3a3a3c; --border-width: 0; --inner-border-width: 0; --border-color: transparent; --box-shadow: none;">
+              <ion-icon name="lock-closed-outline" slot="start" class="input-icon"></ion-icon>
               <ion-input
                 [(ngModel)]="password" 
                 name="password" 
@@ -89,12 +89,12 @@
                 required
                 class="modern-input">
               </ion-input>
-            </div>
+            </ion-item>
           </div>
 
           <div class="input-group">
-            <div class="input-wrapper">
-              <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+            <ion-item class="modern-item" lines="none" style="--background: #3a3a3c; --border-width: 0; --inner-border-width: 0; --border-color: transparent; --box-shadow: none;">
+              <ion-icon name="lock-closed-outline" slot="start" class="input-icon"></ion-icon>
               <ion-input
                 [(ngModel)]="confirmPassword" 
                 name="confirmPassword" 
@@ -103,7 +103,7 @@
                 required
                 class="modern-input">
               </ion-input>
-            </div>
+            </ion-item>
           </div>
         </form>
 
@@ -112,20 +112,25 @@
           <ion-icon name="alert-circle-outline" class="error-icon"></ion-icon>
           <p class="error-message">{{ message }}</p>
         </div>
-      </div>
 
-      <!-- Botón de registro fuera del form-card -->
-      <ion-button 
-        expand="block" 
-        type="button"
-        [disabled]="loading"
-        (click)="register()"
-        class="register-button">
-        <ion-icon name="person-add-outline" slot="start"></ion-icon>
-        {{ loading ? 'Creando...' : 'Crear Cuenta' }}
-      </ion-button>
+        <!-- Botón de registro dentro del form-card -->
+        <ion-button 
+          expand="block" 
+          type="button"
+          [disabled]="loading"
+          (click)="register()"
+          class="register-button">
+          <ion-icon name="person-add-outline" slot="start"></ion-icon>
+          {{ loading ? 'Creando...' : 'Crear Cuenta' }}
+        </ion-button>
+      </div>
     </div>
   </div>
 </ion-content>
+
+<!-- Footer fijo -->
+<div class="fixed-footer">
+  <p class="footer-text">© {{ currentYear }} Coritos. By Rafael H.</p>
+</div>
 
 

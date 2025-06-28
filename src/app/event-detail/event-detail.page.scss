@@ -20,6 +20,22 @@ ion-content {
   margin-top: 0;
 }
 
+.content-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.centered-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
 .header-container {
   height: 200px;
   background-size: cover;
@@ -47,6 +63,7 @@ ion-content {
   position: relative;
   z-index: 1;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+  text-align: center;
 }
 
 .event-title {
@@ -65,6 +82,15 @@ ion-content {
   margin-top: -50px;
   position: relative;
   z-index: 2;
+  width: 100%;
+}
+
+.main-grid ion-col {
+  margin-bottom: 16px;
+}
+
+.main-grid ion-col:last-child {
+  margin-bottom: 0;
 }
 
 .detail-card {
@@ -72,6 +98,8 @@ ion-content {
   border-radius: 12px;
   margin: 0;
   color: #f5f5f5;
+  height: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .detail-item {
@@ -109,6 +137,9 @@ ion-content {
 .activities-title {
   color: #667eea;
   padding: 0 16px;
+  margin-bottom: 16px;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 ion-list ion-item ion-icon[name="checkmark-circle-outline"] {
@@ -136,6 +167,7 @@ ion-list {
     --border-radius: 8px;
     font-weight: 500;
     text-transform: none;
+    margin-bottom: 8px;
     
     &:hover {
       --background: rgba(102, 126, 234, 0.1);
@@ -149,5 +181,21 @@ ion-list {
     &:hover {
       --background: rgba(235, 68, 90, 0.1);
     }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .centered-content {
+    padding: 0 8px;
+    max-width: 100%;
+  }
+  
+  .main-grid {
+    margin-top: -30px;
+  }
+  
+  .main-grid ion-col {
+    margin-bottom: 12px;
   }
 }

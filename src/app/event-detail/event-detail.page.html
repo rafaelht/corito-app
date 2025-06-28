@@ -12,88 +12,90 @@
     <ion-spinner name="crescent"></ion-spinner>
   </div>
 
-  <div *ngIf="!isLoading && event">
+  <div *ngIf="!isLoading && event" class="content-container">
     <div class="header-container" [style.background-image]="'url(/assets/icon/event-bg.jpg)'">
       <div class="header-overlay"></div>
       <h1 class="event-title">{{ event.title }}</h1>
       <p class="event-subtitle">{{ event.date | date:'fullDate' }}</p>
     </div>
 
-    <ion-grid class="ion-padding main-grid">
-      <ion-row class="ion-justify-content-center">
-        <!-- Columna de Detalles -->
-        <ion-col size="12" size-md="8">
-          <ion-card class="detail-card">
-            <ion-card-content>
-              <div class="detail-item">
-                <ion-icon name="calendar-outline" slot="start"></ion-icon>
-                <ion-label>
-                  <h2>Fecha y Hora</h2>
-                  <p>{{ event.date | date:'fullDate' }} a las {{ event.date + 'T' + event.time | date:'h:mm a' }}</p>
-                </ion-label>
-              </div>
-              <div class="detail-item">
-                <ion-icon name="location-outline" slot="start"></ion-icon>
-                <ion-label>
-                  <h2>Ubicación</h2>
-                  <p>{{ event.location }}</p>
-                </ion-label>
-              </div>
-              <div class="detail-item" *ngIf="event.max_guests">
-                <ion-icon name="people-outline" slot="start"></ion-icon>
-                <ion-label>
-                  <h2>Invitados</h2>
-                  <p>Hasta {{ event.max_guests }} personas</p>
-                </ion-label>
-              </div>
-              <div class="detail-item">
-                <ion-icon name="reader-outline" slot="start"></ion-icon>
-                <ion-label>
-                  <h2>Descripción</h2>
-                  <p>{{ event.description || 'No hay descripción.' }}</p>
-                </ion-label>
-              </div>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
+    <div class="centered-content">
+      <ion-grid class="ion-padding main-grid">
+        <ion-row>
+          <!-- Columna de Detalles -->
+          <ion-col size="12">
+            <ion-card class="detail-card">
+              <ion-card-content>
+                <div class="detail-item">
+                  <ion-icon name="calendar-outline" slot="start"></ion-icon>
+                  <ion-label>
+                    <h2>Fecha y Hora</h2>
+                    <p>{{ event.date | date:'fullDate' }} a las {{ event.date + 'T' + event.time | date:'h:mm a' }}</p>
+                  </ion-label>
+                </div>
+                <div class="detail-item">
+                  <ion-icon name="location-outline" slot="start"></ion-icon>
+                  <ion-label>
+                    <h2>Ubicación</h2>
+                    <p>{{ event.location }}</p>
+                  </ion-label>
+                </div>
+                <div class="detail-item" *ngIf="event.max_guests">
+                  <ion-icon name="people-outline" slot="start"></ion-icon>
+                  <ion-label>
+                    <h2>Invitados</h2>
+                    <p>Hasta {{ event.max_guests }} personas</p>
+                  </ion-label>
+                </div>
+                <div class="detail-item">
+                  <ion-icon name="reader-outline" slot="start"></ion-icon>
+                  <ion-label>
+                    <h2>Descripción</h2>
+                    <p>{{ event.description || 'No hay descripción.' }}</p>
+                  </ion-label>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
 
-        <!-- Columna de Actividades -->
-        <ion-col size="12" size-md="8" *ngIf="event.activities && event.activities.length > 0">
-          <ion-card class="detail-card">
-            <ion-card-content>
-              <h2 class="activities-title">Actividades</h2>
-              <ion-list>
-                <ion-item *ngFor="let activity of event.activities">
-                  <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
-                  <ion-label>{{ activity }}</ion-label>
-                </ion-item>
-              </ion-list>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-        
-        <!-- Botones de Acción -->
-        <ion-col size="12" size-md="8" *ngIf="!isLoading && event && isOwner">
-          <ion-grid class="action-buttons">
-            <ion-row>
-              <ion-col>
-                <ion-button expand="block" (click)="editEvent()">
-                  <ion-icon name="create-outline" slot="start"></ion-icon>
-                  Editar
-                </ion-button>
-              </ion-col>
-              <ion-col>
-                <ion-button expand="block" color="danger" (click)="confirmDelete()">
-                  <ion-icon name="trash-outline" slot="start"></ion-icon>
-                  Eliminar
-                </ion-button>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-col>
-        
-      </ion-row>
-    </ion-grid>
+          <!-- Columna de Actividades -->
+          <ion-col size="12" *ngIf="event.activities && event.activities.length > 0">
+            <ion-card class="detail-card">
+              <ion-card-content>
+                <h2 class="activities-title">Actividades</h2>
+                <ion-list>
+                  <ion-item *ngFor="let activity of event.activities">
+                    <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+                    <ion-label>{{ activity }}</ion-label>
+                  </ion-item>
+                </ion-list>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+          
+          <!-- Botones de Acción -->
+          <ion-col size="12" *ngIf="!isLoading && event && isOwner">
+            <ion-grid class="action-buttons">
+              <ion-row>
+                <ion-col>
+                  <ion-button expand="block" (click)="editEvent()">
+                    <ion-icon name="create-outline" slot="start"></ion-icon>
+                    Editar
+                  </ion-button>
+                </ion-col>
+                <ion-col>
+                  <ion-button expand="block" color="danger" (click)="confirmDelete()">
+                    <ion-icon name="trash-outline" slot="start"></ion-icon>
+                    Eliminar
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-col>
+          
+        </ion-row>
+      </ion-grid>
+    </div>
 
   </div>
 

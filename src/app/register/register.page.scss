@@ -29,34 +29,21 @@ ion-title {
 
 .register-button {
   --background: transparent;
-  --border-color: #4facfe;
-  --border-width: 2px;
+  --border-color: #667eea;
+  --border-width: 1px;
   --border-style: solid;
-  --color: #4facfe;
-  --border-radius: 12px;
-  box-shadow: none;
-  border: 2px solid #4facfe;
-  border-radius: 12px;
-  background: transparent;
-  overflow: hidden;
+  --color: #667eea;
+  --border-radius: 8px;
+  font-weight: 500;
+  text-transform: none;
   margin-top: 16px;
-  width: 100%;
-}
-
-.register-button::part(native) {
-  border-radius: 12px !important;
-  overflow: hidden;
-}
-
-.register-button:hover {
-  --background: rgba(79, 172, 254, 0.1);
-  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.2);
-  background: rgba(79, 172, 254, 0.1);
+  
+  &:hover {
+    --background: rgba(102, 126, 234, 0.1);
+  }
 }
 
 .register-button:disabled {
-  --background: rgba(79, 172, 254, 0.1);
-  --color: rgba(79, 172, 254, 0.6);
-  background: rgba(79, 172, 254, 0.1);
-  color: rgba(79, 172, 254, 0.6);
+  --background: rgba(102, 126, 234, 0.1);
+  --color: rgba(102, 126, 234, 0.6);
 } 

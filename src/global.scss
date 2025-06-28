@@ -672,6 +672,13 @@ ion-toolbar {
   box-shadow: none !important;
   border-radius: 0 !important;
   padding-left: 0 !important;
+  --border-width: 0 !important;
+  --inner-border-width: 0 !important;
+  --border-color: transparent !important;
+  --border-style: none !important;
+  --lines: none !important;
+  --highlight-height: 0 !important;
+  --highlight-color: transparent !important;
 }
 
 .modern-input::part(native) {
@@ -681,16 +688,36 @@ ion-toolbar {
   box-shadow: none !important;
   border-radius: 0 !important;
   padding: 18px 0 18px 0 !important;
+  --border-width: 0 !important;
+  --inner-border-width: 0 !important;
+  --border-color: transparent !important;
+  --border-style: none !important;
+  --lines: none !important;
+  --highlight-height: 0 !important;
+  --highlight-color: transparent !important;
 }
 
 .modern-input::part(placeholder) {
   color: #888 !important;
 }
 
-// Forzar colores en inputs para todas las plataformas
-ion-input.modern-input {
-  --color: white !important;
-  color: white !important;
+.modern-input::part(container) {
+  border: none !important;
+  --border-width: 0 !important;
+  --inner-border-width: 0 !important;
+  --lines: none !important;
+  --highlight-height: 0 !important;
+  --highlight-color: transparent !important;
+}
+
+.modern-input::part(wrapper) {
+  border: none !important;
+  --border-width: 0 !important;
+  --inner-border-width: 0 !important;
+  --lines: none !important;
+  --highlight-height: 0 !important;
+  --border-color: transparent !important;
+  --border-style: none !important;
   &::part(native) {
     color: white !important;
     background: transparent !important;
@@ -698,9 +725,65 @@ ion-input.modern-input {
     box-shadow: none !important;
     border-radius: 0 !important;
     padding: 18px 0 18px 0 !important;
+    --border-width: 0 !important;
+    --inner-border-width: 0 !important;
+    --border-color: transparent !important;
+    --border-style: none !important;
   }
   &::part(placeholder) {
     color: #888 !important;
+  }
+  &::part(container) {
+    border: none !important;
+    --border-width: 0 !important;
+    --inner-border-width: 0 !important;
+  }
+}
+
+// Forzar colores en inputs para todas las plataformas
+ion-input.modern-input {
+  --color: white !important;
+  color: white !important;
+  --border-width: 0 !important;
+  --inner-border-width: 0 !important;
+  --border-color: transparent !important;
+  --border-style: none !important;
+  --lines: none !important;
+  --highlight-height: 0 !important;
+  --highlight-color: transparent !important;
+  &::part(native) {
+    color: white !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 18px 0 18px 0 !important;
+    --border-width: 0 !important;
+    --inner-border-width: 0 !important;
+    --border-color: transparent !important;
+    --border-style: none !important;
+    --lines: none !important;
+    --highlight-height: 0 !important;
+    --highlight-color: transparent !important;
+  }
+  &::part(placeholder) {
+    color: #888 !important;
+  }
+  &::part(container) {
+    border: none !important;
+    --border-width: 0 !important;
+    --inner-border-width: 0 !important;
+    --lines: none !important;
+    --highlight-height: 0 !important;
+    --highlight-color: transparent !important;
+  }
+  &::part(wrapper) {
+    border: none !important;
+    --border-width: 0 !important;
+    --inner-border-width: 0 !important;
+    --lines: none !important;
+    --highlight-height: 0 !important;
+    --highlight-color: transparent !important;
   }
 }
 
@@ -708,6 +791,11 @@ ion-input.modern-input {
 .md ion-input.modern-input {
   --color: white !important;
   color: white !important;
+  --border-width: 0 !important;
+  --inner-border-width: 0 !important;
+  --lines: none !important;
+  --highlight-height: 0 !important;
+  --highlight-color: transparent !important;
   &::part(native) {
     color: white !important;
     background: transparent !important;
@@ -715,6 +803,29 @@ ion-input.modern-input {
     box-shadow: none !important;
     border-radius: 0 !important;
     padding: 18px 0 18px 0 !important;
+    --border-width: 0 !important;
+    --inner-border-width: 0 !important;
+    --border-color: transparent !important;
+    --border-style: none !important;
+    --lines: none !important;
+    --highlight-height: 0 !important;
+    --highlight-color: transparent !important;
+  }
+  &::part(container) {
+    border: none !important;
+    --border-width: 0 !important;
+    --inner-border-width: 0 !important;
+    --lines: none !important;
+    --highlight-height: 0 !important;
+    --highlight-color: transparent !important;
+  }
+  &::part(wrapper) {
+    border: none !important;
+    --border-width: 0 !important;
+    --inner-border-width: 0 !important;
+    --lines: none !important;
+    --highlight-height: 0 !important;
+    --highlight-color: transparent !important;
   }
 }
 
@@ -722,6 +833,11 @@ ion-input.modern-input {
 .ios ion-input.modern-input {
   --color: white !important;
   color: white !important;
+  --border-width: 0 !important;
+  --inner-border-width: 0 !important;
+  --lines: none !important;
+  --highlight-height: 0 !important;
+  --highlight-color: transparent !important;
   &::part(native) {
     color: white !important;
     background: transparent !important;
@@ -729,6 +845,29 @@ ion-input.modern-input {
     box-shadow: none !important;
     border-radius: 0 !important;
     padding: 18px 0 18px 0 !important;
+    --border-width: 0 !important;
+    --inner-border-width: 0 !important;
+    --border-color: transparent !important;
+    --border-style: none !important;
+    --lines: none !important;
+    --highlight-height: 0 !important;
+    --highlight-color: transparent !important;
+  }
+  &::part(container) {
+    border: none !important;
+    --border-width: 0 !important;
+    --inner-border-width: 0 !important;
+    --lines: none !important;
+    --highlight-height: 0 !important;
+    --highlight-color: transparent !important;
+  }
+  &::part(wrapper) {
+    border: none !important;
+    --border-width: 0 !important;
+    --inner-border-width: 0 !important;
+    --lines: none !important;
+    --highlight-height: 0 !important;
+    --highlight-color: transparent !important;
   }
 }
 
@@ -857,15 +996,45 @@ ion-input.modern-input {
 /* Estilos para los items modernos en auth y register */
 .modern-item {
   --background: #3a3a3c;
-  --border-color: #555;
+  --border-color: transparent;
   --border-radius: 12px;
-  --border-width: 1px;
+  --border-width: 0;
+  --border-style: none;
   --padding-start: 10px;
   --inner-padding-end: 10px;
   margin-bottom: 20px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
   --min-height: 55px;
+  border: none;
+  --inner-border-width: 0;
+  --border-width: 0;
+  --lines: none;
+  --highlight-height: 0;
+  --highlight-color: transparent;
+}
+
+.modern-item::part(native) {
+  border: none !important;
+  --border-width: 0 !important;
+  --inner-border-width: 0 !important;
+  --lines: none !important;
+  --highlight-height: 0 !important;
+  --highlight-color: transparent !important;
+}
+
+.modern-item::part(inner) {
+  border: none !important;
+  --border-width: 0 !important;
+  --inner-border-width: 0 !important;
+  --lines: none !important;
+}
+
+.modern-item::part(wrapper) {
+  border: none !important;
+  --border-width: 0 !important;
+  --inner-border-width: 0 !important;
+  --lines: none !important;
 }
 
 .modern-item ion-icon {
@@ -884,6 +1053,10 @@ ion-input.modern-input {
   --placeholder-color: #888;
   font-weight: 400;
   --padding-start: 0;
+  --border-width: 0;
+  --inner-border-width: 0;
+  --lines: none;
+  --highlight-height: 0;
 }
 
 // Footer fijo para dispositivos móviles
@@ -896,6 +1069,10 @@ ion-input.modern-input {
   padding: 15px 20px;
   padding-bottom: calc(15px + env(safe-area-inset-bottom));
   z-index: 1000;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .fixed-footer .footer-text {
@@ -903,6 +1080,80 @@ ion-input.modern-input {
   font-size: 0.75rem;
   margin: 0;
   font-weight: 400;
+}
+
+// Estilos para cuando el teclado está abierto en dispositivos móviles
+@media (max-height: 500px) {
+  .fixed-footer {
+    position: relative;
+    bottom: auto;
+    margin-top: 20px;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-top: none;
+  }
+  
+  .auth-container {
+    padding-bottom: 20px;
+  }
+  
+  .form-section {
+    margin-top: -50px;
+  }
+}
+
+// Estilos específicos para dispositivos móviles con teclado abierto
+@media (max-height: 400px) {
+  .fixed-footer {
+    display: none;
+  }
+  
+  .auth-container {
+    padding-bottom: 10px;
+  }
+  
+  .form-section {
+    margin-top: -100px;
+  }
+  
+  .brand-section {
+    margin-bottom: 10px;
+    margin-top: -10px;
+  }
+  
+  .form-card {
+    padding: 15px 12px;
+  }
+  
+  .form-title {
+    font-size: 1.1rem;
+    margin: 0 0 10px 0;
+  }
+  
+  .input-group {
+    margin-bottom: 8px;
+  }
+}
+
+// Estilos para dispositivos móviles con teclado muy abierto
+@media (max-height: 300px) {
+  .fixed-footer {
+    display: none;
+  }
+  
+  .brand-section {
+    display: none;
+  }
+  
+  .form-section {
+    margin-top: 0;
+  }
+  
+  .auth-container {
+    padding: 5px;
+    height: auto;
+  }
 }
 
 // Estilos responsivos para dispositivos móviles
@@ -1158,4 +1409,50 @@ ion-header:not(.auth-header) {
 ion-content:not(.auth-common) {
   // 80px (altura header) + 16px (espacio extra) + safe area
   --padding-top: calc(80px + var(--ion-safe-area-top, 0px) + 16px);
+}
+
+// Estilos globales para eliminar líneas en auth y register
+.auth-content .modern-item,
+.auth-content .modern-input,
+.auth-content ion-item,
+.auth-content ion-input {
+  --lines: none !important;
+  --highlight-height: 0 !important;
+  --highlight-color: transparent !important;
+  --border-width: 0 !important;
+  --inner-border-width: 0 !important;
+  --border-color: transparent !important;
+  --border-style: none !important;
+}
+
+.auth-content .modern-item::part(native),
+.auth-content .modern-item::part(inner),
+.auth-content .modern-item::part(wrapper),
+.auth-content .modern-input::part(native),
+.auth-content .modern-input::part(container),
+.auth-content .modern-input::part(wrapper) {
+  --lines: none !important;
+  --highlight-height: 0 !important;
+  --highlight-color: transparent !important;
+  --border-width: 0 !important;
+  --inner-border-width: 0 !important;
+  --border-color: transparent !important;
+  --border-style: none !important;
+  border: none !important;
+}
+
+.auth-content ion-item.modern-item,
+.auth-content ion-item.modern-item::part(native),
+.auth-content ion-item.modern-item::part(inner),
+.auth-content ion-item.modern-item::part(wrapper) {
+  border: none !important;
+  box-shadow: none !important;
+  --border-width: 0 !important;
+  --inner-border-width: 0 !important;
+  --border-color: transparent !important;
+  --border-style: none !important;
+  --background: #3a3a3c !important;
+  --highlight-height: 0 !important;
+  --highlight-color: transparent !important;
+  --min-height: 55px !important;
 }
